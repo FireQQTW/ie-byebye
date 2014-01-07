@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/**
+*
+* @authors Derek Liu (azraelxuan927@gmail.com)
+* @date    2013-08-29 17:43:30
+* @version 0.1
+*/
+#page {
+    position: relative;
+    margin-top: -6px;
+}
+
+.ieByeBar {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: url(../images/barBg.png) repeat-x;
+    z-index: 999;
+}
+
+.ieByeBar p {
+    float: left;
+    display: inline-block;
+    width: 500px;
+    height: auto;
+    line-height: 33px;
+    padding-top: 5px;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #8E8E8E;
+}
+
+.BtnWrap {
+    float: right;
+    width: 520px;
+    height: auto;
+}
+
+.closeBtn, .goChrome, .goFiefox, .goIE {
+    background: url('../images/allBtn.png') no-repeat;
+    text-indent: -9999px;
+}
+
+.goChrome, .goFiefox, .goIE {
+    display: block;
+    float: left;
+}
+
+.closeBtn {
+    position: absolute;
+    display: block;
+    float: right;
+    right: 20px;
+    top: 10px;
+    background-position: 0 -114px;
+    height: 18px;
+    width: 18px;
+    text-indent: -9999px;
+}
+
+.goChrome {
+    background-position: 0 0;
+    height: 38px;
+    width: 136px;
+}
+
+.goFiefox {
+    background-position: 0 -38px;
+    height: 38px;
+    width: 135px;
+}
+
+.goIE {
+    background-position: 0 -76px;
+    height: 38px;
+    width: 132px;
+}
