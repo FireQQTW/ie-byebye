@@ -23,9 +23,8 @@ $app = new Illuminate\Foundation\Application;
 | given environment, then we will automatically detect it for you.
 |
 */
-
 $env = $app->detectEnvironment(array(
-    'dev'   =>  array('le-laravel.dev')
+    'dev'   =>  array('*.dev', 'casper-pc')
 
 ));
 
