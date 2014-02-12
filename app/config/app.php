@@ -28,6 +28,11 @@ return array(
 
 	'url' => 'http://localhost',
 
+	/**
+	 * Web Site Name
+	 */
+	'site'	=>	'Demo Site',
+	'index'	=>	'',
 	/*
 	|--------------------------------------------------------------------------
 	| Application Timezone
@@ -39,7 +44,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'Asia/Taipei',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -52,7 +57,7 @@ return array(
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'tw',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,7 +70,7 @@ return array(
 	|
 	*/
 
-	'key' => 'YourSecretKey!!!',
+	'key' => 'le-laravel.dev.Key@casper',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -106,7 +111,10 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-
+		'Toddish\Verify\VerifyServiceProvider',
+		'Way\Generators\GeneratorsServiceProvider',
+		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+		'Casper\Permission\PermissionServiceProvider',
 	),
 
 	/*
@@ -172,7 +180,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-
+		'Breadcrumbs'     => 'DaveJamesMiller\Breadcrumbs\Facade',
+		'Permission'      => 'Casper\Permission\PermissionFacade',
 	),
 
 );

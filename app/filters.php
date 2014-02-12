@@ -39,6 +39,14 @@ Route::filter('auth', function()
 });
 
 
+Route::filter('auth.admin', function(){
+    if(Auth::guest()) return Redirect::route('admin.login');
+    // Permission Verify
+    Permission::verify();
+
+
+});
+
 Route::filter('auth.basic', function()
 {
 	return Auth::basic();
