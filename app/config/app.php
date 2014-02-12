@@ -31,8 +31,7 @@ return array(
 	/**
 	 * Web Site Name
 	 */
-	'site'	=>	'Demo Site',
-	'index'	=>	'',
+	'site'	=>	'宿舍用電管理雲端服務系統',
 	/*
 	|--------------------------------------------------------------------------
 	| Application Timezone
