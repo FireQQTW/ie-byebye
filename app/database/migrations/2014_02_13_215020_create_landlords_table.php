@@ -16,8 +16,8 @@ class CreateLandlordsTable extends Migration {
 			$table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('key', 32)->unique();
-            $table->string('username', 50);
-            $table->string('password', 32);
+            $table->string('username', 50)->index();
+            $table->string('password', 60)->index();
             $table->string('name', 10);
             $table->integer('zipcode');
             $table->string('county', 10);
