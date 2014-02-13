@@ -34,7 +34,7 @@
 
 				&nbsp; &nbsp; &nbsp;
 
-				{{ HTML::decode(link_to_route('admin.permissions.index', '<i class="icon-remove bigger-110"></i>取消', array('class' => 'btn'))) }}
+				{{ HTML::decode(link_to_route('admin.permissions.index', '<i class="icon-remove bigger-110"></i>取消', null, array('class' => 'btn'))) }}
 			</div>
 		</div>
 	{{ Form::close() }}
