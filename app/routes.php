@@ -36,6 +36,10 @@ Route::any('admin/login', array('as' => 'admin.login', 'uses' => 'LoginControlle
     Route::post('roles/assign/store', array('as' => 'admin.roles.assign.store', 'uses' => 'Admin\PermissionAssignController@store'));
     // 權限設定
     Route::resource('permissions', 'Admin\PermissionsController');
+    // Landlord
+    Route::resource('landlords', 'Admin\LandlordsController');
+    // Houses
+    Route::resource('houses', 'Admin\HousesController');
  });
 
 

@@ -73,6 +73,20 @@ Breadcrumbs::register('admin.permissions.edit', function($breadcrumbs, $permissi
 
 Breadcrumbs::register('admin.permissions.create', function($breadcrumbs){
     $breadcrumbs->parent('admin.permissions');
-    $breadcrumbs->push('權限修改', route('admin.permissions.create'));
+    $breadcrumbs->push('權限新增', route('admin.permissions.create'));
 });
 
+// landlord
+Breadcrumbs::register('admin.landlords', function($breadcrumbs){
+    $breadcrumbs->push('房東設定', route('admin.landlords.index'));
+});
+
+Breadcrumbs::register('admin.landlords.edit', function($breadcrumbs, $permission){
+    $breadcrumbs->parent('admin.landlords');
+    $breadcrumbs->push('房東修改', route('admin.landlords.edit', $permission->id));
+});
+
+Breadcrumbs::register('admin.landlords.create', function($breadcrumbs){
+    $breadcrumbs->parent('admin.landlords');
+    $breadcrumbs->push('房東新增', route('admin.landlords.create'));
+});

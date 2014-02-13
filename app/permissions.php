@@ -18,3 +18,8 @@ Permission::setPermission(array('admin.roles.edit', 'admin.roles.update'), array
 Permission::setPermission(array('admin.users.index', 'admin.users.show'), array('user-index'));
 Permission::setPermission(array('admin.users.create', 'admin.users.store'), array('user-create'));
 Permission::setPermission(array('admin.users.edit', 'admin.users.update'), array('user-edit'));
+
+// landlords
+Permission::setPermission(array('admin.landlords.index', 'admin.landlords.show'), array('landlord-index'));
+Permission::setPermission(array('admin.landlords.create', 'admin.landlords.store'), array('landlord-create'));
+Permission::setPermission(array('admin.landlords.edit', 'admin.landlords.update'), array('landlord-edit'));
