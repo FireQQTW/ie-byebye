@@ -1,9 +1,15 @@
 <?php
 
-class Landlord extends Eloquent {
+class Landlord extends  \LaravelBook\Ardent\Ardent {
     protected $table = 'landlords';
-	public static $rules = array('key'   =>  'required',
-                                'username'  =>  'required',
+    protected $guarded = array('_token');
+    public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
+    public $forceEntityHydrationFromInput = true; // hydrates whenever validation is called
+    public static $passwordAttributes  = array('password');
+    public $autoHashPasswordAttributes = true;
+    public $autoPurgeRedundantAttributes = true;
+
+	public static $rules = array('username'  =>  'required',
                                 'password'  =>  'required|confirmed',
                                 'name'  =>  'required',
                                 'zipcode'   =>  'required',
@@ -12,17 +18,15 @@ class Landlord extends Eloquent {
                                 'address'   =>  'required',
                                 'isEnabled' =>  'required'
                                 );
-    public static $messages =array('key.required'   =>  'id建立失敗。',
-                                'username.required'  =>  '請輸入帳號',
-                                'password.required'  =>  '請輸入密碼',
-                                'password.confirmed'    =>  '密碼比對失敗',
-                                'name.required'  =>  '請輸入姓名',
-                                'zipcode.required'   =>  '請選擇郵遞區號',
-                                'county.required'    =>  '請輸入縣市',
-                                'district.required'  =>  '請輸入鄉鎮市區',
-                                'address.required'   =>  '請輸入地址',
-                                'isEnabled.required' =>  '請選擇狀態'
-                                );
+    public static $customMessages =array('required'    =>  '請輸入 :attribute',
+                                          'confirmed'   =>  '密碼比對失敗');
+    // Model Hooks
+    public function beforeCreate()
+    {
+        if(empty($this->key))
+            $this->key = md5(uniqid());
+        return true;
+    }
 
     public function getFullAddress()
     {
