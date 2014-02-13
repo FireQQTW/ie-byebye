@@ -39,20 +39,19 @@ class LandlordsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::all();
-		var_dump($input);
-		exit;
-		$validation = Validator::make($input, \Landlord::$rules, \Landlord::$messages);
-		if($validation->passes())
+		$landlord = new \Landlord;
+		
+		if($landlord->save())
 		{
-			$input['key'] = md5(uniqid());
-			$input['password'] = md5($input['password']);
-			$this->landlord->create($input);
-			return Redirect::route('admin.landlords.index');
+			return Redirect::route('admin.landlords.index')->with('message', "新增完成");
+
 		}
-		return Redirect::route('admin.landlords.create')
-			->withInput()
-			->withErrors($validation); 
+		else
+		{
+			return Redirect::route('admin.landlords.create')
+				->withInput()
+				->withErrors($landlord->errors()); 
+		}
 	}
 
 	/**
