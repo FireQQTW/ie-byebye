@@ -109,22 +109,28 @@
                             <li>
                                  <a href="{{URL::route('admin.users.index')}}">
                                     <i class="icon-double-angle-right"></i>
-                                    <span class="menu-text">管理者設定</span>
+                                    <span class="menu-text">管理者管理</span>
                                 </a>
                             </li>
                             <li>
                                  <a href="{{URL::route('admin.roles.index')}}">
                                     <i class="icon-double-angle-right"></i>
-                                    <span class="menu-text">群組設定</span>
+                                    <span class="menu-text">群組管理</span>
                                 </a>
                             </li>
                             <li>
                                  <a href="{{URL::route('admin.permissions.index')}}">
                                     <i class="icon-double-angle-right"></i>
-                                    <span class="menu-text">權限設定</span>
+                                    <span class="menu-text">權限管理</span>
                                 </a>
                             </li>
                         </ul>
+                        <li>
+                             <a href="{{URL::route('admin.landlords.index')}}">
+                                <i class=""></i>
+                                <span class="menu-text">房東管理</span>
+                            </a>
+                        </li>
                     </li>
                 </ul>
                 <!-- /.nav-list -->
