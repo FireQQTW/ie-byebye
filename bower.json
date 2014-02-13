@@ -1,5 +1,5 @@
 {
-  "name": "laravel",
+  "name": "le-laravel",
   "version": "1.0.0",
   "authors": [
     "Casper Lai <casper.lai@sleepingdesign.com>"
@@ -29,6 +29,7 @@
     "typeahead.js": "~0.9.3",
     "jquery.easy-pie-chart": "~2.0.5",
     "jquery-ui": "~1.10.3",
-    "chosen": "~1.0.0"
+    "chosen": "~1.0.0",
+    "jquery-twzipcode" : "git@github.com:essoduke/jQuery-TWzipcode.git"
   }
 }
