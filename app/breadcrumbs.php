@@ -92,15 +92,15 @@ Breadcrumbs::register('admin.landlords.create', function($breadcrumbs){
 });
 
 // houses
-Breadcrumbs::register('admin.houses', function($breadcrumbs, $landlord){
+Breadcrumbs::register('admin.landlords.houses', function($breadcrumbs, $landlord){
     $breadcrumbs->parent('admin.landlords');
-    $breadcrumbs->push('租屋處管理', route('admin.houses.index', $landlord->sn));
+    $breadcrumbs->push('租屋處管理', route('admin.landlords.houses.index', $landlord->sn));
 });
-Breadcrumbs::register('admin.houses.create', function($breadcrumbs, $landlord){
-    $breadcrumbs->parent('admin.houses', $landlord);
-    $breadcrumbs->push('租屋處新增', route('admin.houses.create'));
+Breadcrumbs::register('admin.landlords.houses.create', function($breadcrumbs, $landlord){
+    $breadcrumbs->parent('admin.landlords.houses', $landlord);
+    $breadcrumbs->push('租屋處新增', route('admin.landlords.houses.create'));
 });
-Breadcrumbs::register('admin.houses.edit', function($breadcrumbs, $landlord){
-    $breadcrumbs->parent('admin.houses', $landlord);
-    $breadcrumbs->push('租屋處修改', route('admin.houses.edit'));
+Breadcrumbs::register('admin.landlords.houses.edit', function($breadcrumbs, $landlord){
+    $breadcrumbs->parent('admin.landlords.houses', $landlord);
+    $breadcrumbs->push('租屋處修改', route('admin.landlords.houses.edit'));
 });

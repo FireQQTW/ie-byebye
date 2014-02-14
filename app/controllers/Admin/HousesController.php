@@ -12,16 +12,16 @@ class HousesController extends \BaseController {
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param  string  $sn
+	 * @param  string  $landlord_sn
 	 * @return Response
 	 */
-	public function index($sn)
+	public function index($landlord_sn)
 	{
 		$h1Small = '列表 &amp; 狀態';
 		try
 		{
 			// find house through landlord
-			$landlord = \Landlord::where('sn', '=', $sn)->firstOrFail();
+			$landlord = \Landlord::where('sn', '=', $landlord_sn)->firstOrFail();
 			$houses = $landlord->houses;
         	return View::make('admin.houses.index', compact('houses', 'h1Small', 'landlord'));
 		}
@@ -36,13 +36,13 @@ class HousesController extends \BaseController {
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @param  string  $sn
+	 * @param  string  $landlord_sn
 	 * @return Response
 	 */
-	public function create($sn)
+	public function create($landlord_sn)
 	{
 		$h1Small = '新增';
-		$landlord = \Landlord::where('sn', '=', $sn)->firstOrFail();
+		$landlord = \Landlord::where('sn', '=', $landlord_sn)->firstOrFail();
         return View::make('admin.houses.create', compact('h1Small', 'landlord'));
 	}
 
@@ -51,17 +51,17 @@ class HousesController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store($landlord_sn)
 	{
 		//
 		$house = new \House;
 		if($house->save())
 		{
-			return Redirect::route('admin.houses.index', $house->landlord->sn)->with('message', "新增完成");
+			return Redirect::route('admin.landlords.houses.index', $landlord_sn)->with('message', "新增完成");
 		}
 		else
 		{
-			return Redirect::route('admin.houses.create', $house->landlord->sn)
+			return Redirect::route('admin.landlords.houses.create', $landlord_sn)
 				->withInput()
 				->withErrors($house->errors()); 
 		}
@@ -70,11 +70,11 @@ class HousesController extends \BaseController {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  string  $sn
 	 * @param  string  $landlord_sn
+	 * @param  string  $sn
 	 * @return Response
 	 */
-	public function edit($sn, $landlord_sn)
+	public function edit($landlord_sn, $sn)
 	{
 		try
 		{
@@ -85,7 +85,7 @@ class HousesController extends \BaseController {
 		}
 		catch (ModelNotFoundException $e)
 		{
-			return Redirect::route('admin.houses.index', array($landlord_sn))->with('message', '無此筆資料，請檢查。');
+			return Redirect::route('admin.landlords.houses.index', array($landlord_sn))->with('message', '無此筆資料，請檢查。');
 		}
 		
 	}
@@ -96,7 +96,7 @@ class HousesController extends \BaseController {
 	 * @param  string  $sn
 	 * @return Response
 	 */
-	public function update($sn)
+	public function update($landlord_sn, $sn)
 	{
 		//
 		try
@@ -104,11 +104,11 @@ class HousesController extends \BaseController {
 			$house = \House::where('sn', '=', $sn)->firstOrFail();
 			if($house->save())
 			{
-				return Redirect::route('admin.houses.index', $house->landlord->sn)->with('message', "修改完成");
+				return Redirect::route('admin.landlords.houses.index', $house->landlord->sn)->with('message', "修改完成");
 			}
 			else
 			{
-				return Redirect::route('admin.houses.edit', $sn, $house->landlord->sn)
+				return Redirect::route('admin.landlords.houses.edit', $sn, $house->landlord->sn)
 					->withInput()
 					->withErrors($house->errors()); 
 			}
@@ -122,12 +122,21 @@ class HousesController extends \BaseController {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  string  $sn
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($landlord_sn, $sn)
 	{
-		//
+		try
+		{
+			$house = \House::where('sn', '=', $sn)->firstOrFail();
+			$house->delete();
+			return Redirect::route('admin.landlords.houses.index', $landlord_sn)->with('message', "刪除完成");
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return Redirect::route('admin.landlords.houses.index', $landlord_sn)->with('message', '無此筆資料，請檢查。');
+		}
 	}
 
 }

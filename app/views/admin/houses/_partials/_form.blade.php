@@ -16,6 +16,6 @@
         {{ Form::hidden('landlord_id', $landlord->id) }}
         &nbsp; &nbsp; &nbsp;
 
-        {{ HTML::decode(link_to_route('admin.houses.index', '<i class="icon-remove bigger-110"></i>取消', array('sn'  =>  $landlord->sn), array('class' => 'btn'))) }}
+        {{ HTML::decode(link_to_route('admin.landlords.houses.index', '<i class="icon-remove bigger-110"></i>取消', array('class' => 'btn'))) }}
     </div>
 </div>
