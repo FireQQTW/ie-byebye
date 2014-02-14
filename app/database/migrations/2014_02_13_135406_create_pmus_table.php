@@ -21,8 +21,8 @@ class CreatePmusTable extends Migration {
 			$table->string('ip', 16);
 			$table->integer('use_w')->default(0);
 			$table->integer('last_w')->default(0);
-			$table->integer('mu_v')->default(0);
-			$table->integer('mu_a')->default(0);
+			$table->float('mu_v')->default(0);
+			$table->float('mu_a')->default(0);
 			$table->integer('use_minute')->default(0);
 			$table->integer('last_minute')->default(0);
 			$table->boolean('isEnabled')->default(1);

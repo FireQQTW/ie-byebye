@@ -17,11 +17,11 @@ class CreateRoomsTable extends Migration {
 			$table->increments('id');
 			$table->string('sn', 32)->uniqid();
 			$table->integer('house_id')->unsigned()->index();
-			$table->string('username', 50)->index();
-			$table->string('password', 32)->index();
+			$table->string('username', 50)->nullable()->index();
+			$table->string('password', 32)->nullable()->index();
 			$table->string('name', 255);
 			$table->decimal('billed', 10, 0);
-			$table->string('BilledTypeJsonData', 255);
+			$table->string('BilledTypeJsonData', 255)->nullable();
 			$table->boolean('isEnabled')->defaut(1);
 			$table->timestamps();
 		});
