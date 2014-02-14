@@ -1,6 +1,6 @@
 <?php
 
-class Landlord extends  \LaravelBook\Ardent\Ardent {
+class Landlord extends \LaravelBook\Ardent\Ardent {
     protected $table = 'landlords';
     protected $guarded = array('_token');
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
