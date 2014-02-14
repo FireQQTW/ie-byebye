@@ -1,6 +1,7 @@
 <?php
 
 class Landlord extends \LaravelBook\Ardent\Ardent {
+    // default config
     protected $table = 'landlords';
     protected $guarded = array('_token');
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
@@ -8,7 +9,7 @@ class Landlord extends \LaravelBook\Ardent\Ardent {
     public static $passwordAttributes  = array('password');
     public $autoHashPasswordAttributes = true;
     public $autoPurgeRedundantAttributes = true;
-
+    // rules & messages
 	public static $rules = array('username'  =>  'required',
                                 'password'  =>  'required|confirmed',
                                 'name'  =>  'required',
@@ -20,6 +21,11 @@ class Landlord extends \LaravelBook\Ardent\Ardent {
                                 );
     public static $customMessages =array('required'    =>  '請輸入 :attribute',
                                           'confirmed'   =>  '密碼比對失敗');
+
+    // relationship
+    public static $relationsData = array(
+        'houses'    => array(self::HAS_MANY, 'House')
+    );
     // Model Hooks
     public function beforeCreate()
     {
