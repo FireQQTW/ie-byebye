@@ -57,7 +57,7 @@ class LandlordsController extends \BaseController {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $sn
+	 * @param  string  $sn
 	 * @return Response
 	 */
 	public function edit($sn)
@@ -77,7 +77,7 @@ class LandlordsController extends \BaseController {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $sn
+	 * @param  string  $sn
 	 * @return Response
 	 */
 	public function update($sn)
@@ -109,7 +109,7 @@ class LandlordsController extends \BaseController {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $key
+	 * @param  string  $sn
 	 * @return Response
 	 */
 	public function destroy($sn)
