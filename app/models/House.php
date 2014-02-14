@@ -27,4 +27,9 @@ class House extends \LaravelBook\Ardent\Ardent {
             $this->sn = md5(uniqid());
         return true;
     }
+
+    public function getFullAddress()
+    {
+        return sprintf('[%s]%s%s%s', $this->zipcode, $this->county, $this->district, $this->address);
+    }
 }
