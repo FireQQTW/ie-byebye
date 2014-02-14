@@ -23,8 +23,8 @@ class Landlord extends  \LaravelBook\Ardent\Ardent {
     // Model Hooks
     public function beforeCreate()
     {
-        if(empty($this->key))
-            $this->key = md5(uniqid());
+        if(empty($this->sn))
+            $this->sn = md5(uniqid());
         return true;
     }
 
