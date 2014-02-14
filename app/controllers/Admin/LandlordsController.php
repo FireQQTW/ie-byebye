@@ -4,12 +4,10 @@ use \View, \Model, \Validator, \Input, \Redirect;
 // Model Exception
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class LandlordsController extends \BaseController {
-	protected $landlord;
-	public function __construct(\Landlord $landlord)
+	public function __construct()
 	{
 		View::share('menu_active', 'landlord');
 		View::share('h1', '房東管理');
-		$this->landlord = $landlord;
 	}
 	/**
 	 * Display a listing of the resource.
@@ -18,7 +16,7 @@ class LandlordsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$landlords = $this->landlord->all();
+		$landlords = \Landlord::all();
 		$h1Small = '列表 &amp; 狀態';
         return View::make('admin.landlords.index', compact('landlords', 'h1Small'));
 	}
@@ -66,7 +64,7 @@ class LandlordsController extends \BaseController {
 	{
 		try
 		{
-			$landlord = $this->landlord->where('sn', '=', $sn)->firstOrFail();
+			$landlord = \Landlord::where('sn', '=', $sn)->firstOrFail();
 		}
 		catch (ModelNotFoundException $e)
 		{
@@ -87,7 +85,7 @@ class LandlordsController extends \BaseController {
 		//
 		try
 		{
-			$landlord = $this->landlord->where('sn', '=', $sn)->firstOrFail();
+			$landlord = \Landlord::where('sn', '=', $sn)->firstOrFail();
 			// if password empty, would not confirm or update password.
 			$landlord::$rules['password'] = (Input::get('password')) ? $landlord::$rules['password'] : '';
 			if($landlord->save())
@@ -119,7 +117,7 @@ class LandlordsController extends \BaseController {
 		//
 		try
 		{
-			$landlord = $this->landlord->where('sn', '=', $sn)->firstOrFail();
+			$landlord = \Landlord::where('sn', '=', $sn)->firstOrFail();
 			$landlord->delete();
 			return Redirect::route('admin.landlords.index')->with('message', "刪除完成");
 		}
