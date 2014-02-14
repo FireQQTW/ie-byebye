@@ -49,6 +49,7 @@ class HousesController extends \BaseController {
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param  string  $house_sn
 	 * @return Response
 	 */
 	public function store($landlord_sn)
