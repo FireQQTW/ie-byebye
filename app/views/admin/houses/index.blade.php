@@ -34,14 +34,14 @@
                                 </label>
                             </td>
                             <td>
-                                {{{ $house->address }}}
+                                {{{ $house->getFullAddress() }}}
                             </td>
                             <td>
                                 <!-- Desktop -->
                                 <div class="visible-md visible-lg hidden-sm hidden-xs">
                                     {{Form::open(array('method' => 'DELETE', 'route' => array('admin.houses.destroy', $house->sn), 'class' => 'btn-group'))}}
                                         {{HTML::decode(link_to_route('admin.houses.index', '<i class="icon-th bigger-120"></i>房間', array($house->sn), array('class' => 'btn btn-xs btn-info')))}}
-                                        {{HTML::decode(link_to_route('admin.houses.edit', '<i class="icon-edit bigger-120"></i>編輯', array($house->sn), array('class' => 'btn btn-xs btn-success')))}}
+                                        {{HTML::decode(link_to_route('admin.houses.edit', '<i class="icon-edit bigger-120"></i>編輯', array($house->sn, $landlord->sn), array('class' => 'btn btn-xs btn-success')))}}
                                         {{HTML::ButtonWithIcon('<i class="icon-trash bigger-120"></i>刪除', array('class' => 'btn btn-xs btn-danger', 'type'  =>  'submit')) }}
                                     {{Form::close()}}
                                 </div>

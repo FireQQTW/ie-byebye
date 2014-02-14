@@ -41,7 +41,8 @@ Route::any('admin/login', array('as' => 'admin.login', 'uses' => 'LoginControlle
     // Houses
     Route::get('houses/index/{sn}', array('as'  =>  'admin.houses.index', 'uses'    =>  'Admin\HousesController@index'));
     Route::get('houses/create/{sn}', array('as' =>  'admin.houses.create', 'uses'   =>  'Admin\HousesController@create'));
-    Route::resource('houses', 'Admin\HousesController', array('except'    =>  array('index', 'show', 'create')));
+    Route::get('houses/edit/{sn}/{landlord_sn}', array('as' =>  'admin.houses.edit', 'uses'   =>  'Admin\HousesController@edit'));
+    Route::resource('houses', 'Admin\HousesController', array('except'    =>  array('index', 'show', 'create', 'edit')));
  });
 
 
