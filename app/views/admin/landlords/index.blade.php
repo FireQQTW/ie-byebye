@@ -46,15 +46,15 @@
                             </td>
                             <td>
                                 <!-- Desktop -->
-                                {{Form::open(array('method' => 'DELETE', 'route' => array('admin.landlords.destroy', $landlord->id), 'class' => 'btn-group'))}}
+                                {{Form::open(array('method' => 'DELETE', 'route' => array('admin.landlords.destroy', $landlord->sn), 'class' => 'btn-group'))}}
                                 <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                    {{HTML::decode(link_to_route('admin.houses.index', '<i class="icon-th bigger-120"></i>租屋處', array($landlord->id), array('class' => 'btn btn-xs btn-success')))}}
-                                    {{HTML::decode(link_to_route('admin.landlords.edit', '<i class="icon-edit bigger-120"></i>編輯', array($landlord->id), array('class' => 'btn btn-xs btn-success')))}}
-                                    {{HTML::decode(link_to_route('admin.landlords.destroy', '<i class="icon-trash bigger-120"></i>刪除', array($landlord->id), array('class' => 'btn btn-xs btn-danger simulate-submit')))}}
+                                    {{HTML::decode(link_to_route('admin.houses.index', '<i class="icon-th bigger-120"></i>租屋處', array($landlord->sn), array('class' => 'btn btn-xs btn-success')))}}
+                                    {{HTML::decode(link_to_route('admin.landlords.edit', '<i class="icon-edit bigger-120"></i>編輯', array($landlord->sn), array('class' => 'btn btn-xs btn-success')))}}
+                                    {{HTML::decode(link_to_route('admin.landlords.destroy', '<i class="icon-trash bigger-120"></i>刪除', array($landlord->sn), array('class' => 'btn btn-xs btn-danger simulate-submit')))}}
                                 </div>
                                 {{Form::close()}}
                                 <!-- RWD -->
-                                {{Form::open(array('method' => 'DELETE', 'route' => array('admin.landlords.destroy', $landlord->id)))}}
+                                {{Form::open(array('method' => 'DELETE', 'route' => array('admin.landlords.destroy', $landlord->sn)))}}
                                     <div class="visible-xs visible-sm hidden-md hidden-lg">
                                         <div class="inline position-relative">
                                             <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -64,12 +64,12 @@
                                             <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
                                                 <li>
 
-                                                    {{HTML::decode(link_to_route('admin.landlords.edit', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($landlord->id), array('class' => 'tooltip-success', 'data-rel'    =>  'tooltip', 'title'  =>  '編輯')))}}
+                                                    {{HTML::decode(link_to_route('admin.landlords.edit', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($landlord->sn), array('class' => 'tooltip-success', 'data-rel'    =>  'tooltip', 'title'  =>  '編輯')))}}
                                                 </li>
 
                                                 <li>
                                                     
-                                                    {{HTML::decode(link_to_route('admin.landlords.destroy', '<span class="red"><i class="icon-trash bigger-120"></i></span>', array($landlord->id), array('class' => 'tooltip-error simulate-submit', 'data-rel'    =>  'tooltip', 'title'  =>  '刪除')))}}
+                                                    {{HTML::decode(link_to_route('admin.landlords.destroy', '<span class="red"><i class="icon-trash bigger-120"></i></span>', array($landlord->sn), array('class' => 'tooltip-error simulate-submit', 'data-rel'    =>  'tooltip', 'title'  =>  '刪除')))}}
                                                     
                                                 </li>
                                             </ul>
