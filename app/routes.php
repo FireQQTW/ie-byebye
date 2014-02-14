@@ -37,9 +37,11 @@ Route::any('admin/login', array('as' => 'admin.login', 'uses' => 'LoginControlle
     // 權限設定
     Route::resource('permissions', 'Admin\PermissionsController');
     // Landlord
-    Route::resource('landlords', 'Admin\LandlordsController');
+    Route::resource('landlords', 'Admin\LandlordsController', array('except'    =>  array('show')));
     // Houses
-    Route::resource('houses', 'Admin\HousesController');
+    Route::get('houses/index/{sn}', array('as'  =>  'admin.houses.index', 'uses'    =>  'Admin\HousesController@index'));
+    Route::get('houses/create/{sn}', array('as' =>  'admin.houses.create', 'uses'   =>  'Admin\HousesController@create'));
+    Route::resource('houses', 'Admin\HousesController', array('except'    =>  array('index', 'show', 'create')));
  });
 
 
