@@ -38,16 +38,16 @@ class CreateRelationship extends Migration {
 	{
 		// drop foreign houses
 		Schema::table('houses', function(Blueprint $table){
-			$table->drop_foreign('houses_landlords_id_foreign');
+			$table->dropForeign('houses_landlords_id_index');
 		});
 		// drop foreign rooms
 		Schema::table('rooms', function(Blueprint $table){
-			$table->drop_foreign('rooms_houses_id_foreign');
+			$table->dropForeign('rooms_houses_id_index');
 		});
 
 		// drop foreign pmus
 		Schema::table('pmus', function(Blueprint $table){
-			$table->drop_foreign('pmus_rooms_id_foreign');
+			$table->dropForeign('pmus_rooms_id_index');
 		});
 	}
 
