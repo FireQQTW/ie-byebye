@@ -15,7 +15,7 @@ class CreateRoomsTable extends Migration {
 		Schema::create('rooms', function(Blueprint $table) {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->string('key', 32)->uniqid();
+			$table->string('sn', 32)->uniqid();
 			$table->integer('house_id')->unsigned()->index();
 			$table->string('username', 50)->index();
 			$table->string('password', 32)->index();

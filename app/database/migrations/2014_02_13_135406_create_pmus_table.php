@@ -15,7 +15,7 @@ class CreatePmusTable extends Migration {
 		Schema::create('pmus', function(Blueprint $table) {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->string('key', 32)->uniqid();
+			$table->string('sn', 32)->uniqid();
 			$table->integer('room_id')->unsigned()->index();
 			$table->string('name', 50);
 			$table->string('ip', 16);

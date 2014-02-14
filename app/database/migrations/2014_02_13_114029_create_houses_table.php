@@ -15,7 +15,7 @@ class CreateHousesTable extends Migration {
 		Schema::create('houses', function(Blueprint $table) {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->string('key', 32)->uniqid();
+			$table->string('sn', 32)->uniqid();
 			$table->integer('landlord_id')->unsigned()->index();
 			$table->integer('zipcode');
 			$table->string('county', 10);
