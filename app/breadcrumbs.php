@@ -78,7 +78,7 @@ Breadcrumbs::register('admin.permissions.create', function($breadcrumbs){
 
 // landlord
 Breadcrumbs::register('admin.landlords', function($breadcrumbs){
-    $breadcrumbs->push('房東設定', route('admin.landlords.index'));
+    $breadcrumbs->push('房東管理', route('admin.landlords.index'));
 });
 
 Breadcrumbs::register('admin.landlords.edit', function($breadcrumbs, $permission){
