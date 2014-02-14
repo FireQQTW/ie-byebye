@@ -1,12 +1,14 @@
 <?php
 namespace Admin;
-use \View, \Model;
+use \View, \Model, \Validator, \Input, \Redirect;
+// Model Exception
+use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class HousesController extends \BaseController {
 	protected $house;
-	public function __construct(\Landlords $house)
+	public function __construct(\House $house)
 	{
 		View::share('menu_active', 'landlord');
-		View::share('h1', '房東管理');
+		View::share('h1', '租屋處管理');
 		$this->house = $house;
 	}
 	/**
@@ -14,10 +16,22 @@ class HousesController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($sn)
 	{
 		$h1Small = '列表 &amp; 狀態';
-        return View::make('admin.houses.index', compact('landlords', 'h1Small'));
+		try
+		{
+			// find house through landlord
+			$landlord = \Landlord::where('sn', '=', $sn)->firstOrFail();
+			$houses = $landlord->houses;
+        	return View::make('admin.houses.index', compact('houses', 'h1Small', 'landlord'));
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return Redirect::route('admin.landlords.index')->with('message', '無此筆資料，請檢查。');
+		}
+		
+		
 	}
 
 	/**
@@ -25,9 +39,11 @@ class HousesController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($sn)
 	{
-        return View::make('houses.create');
+		$h1Small = '新增';
+		$landlord = \Landlord::where('sn', '=', $sn)->firstOrFail();
+        return View::make('admin.houses.create', compact('h1Small', 'landlord'));
 	}
 
 	/**
@@ -38,6 +54,17 @@ class HousesController extends \BaseController {
 	public function store()
 	{
 		//
+		$house = new \House;
+		if($house->save())
+		{
+			return Redirect::route('admin.houses.index', $house->landlord->sn)->with('message', "新增完成");
+		}
+		else
+		{
+			return Redirect::route('admin.houses.create', $house->landlord->sn)
+				->withInput()
+				->withErrors($house->errors()); 
+		}
 	}
 
 	/**

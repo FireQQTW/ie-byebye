@@ -39,7 +39,7 @@
                                 {{{ $landlord->name }}}
                             </td>
                             <td>
-                                {{{ $landlord->address }}}
+                                {{{ $landlord->getFullAddress() }}}
                             </td>
                             <td>
                                 {{ HTML::decode('<span class="label label-sm '.$landlord->getStatusCss().'">'.$landlord->getStatus().'</span>') }}
