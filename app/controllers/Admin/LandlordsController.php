@@ -125,7 +125,7 @@ class LandlordsController extends \BaseController {
 	 * @param  int  $key
 	 * @return Response
 	 */
-	public function destroy($key)
+	public function destroy($sn)
 	{
 		//
 		try
