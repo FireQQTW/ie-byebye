@@ -4,16 +4,15 @@ use \View, \Model, \Validator, \Input, \Redirect;
 // Model Exception
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class HousesController extends \BaseController {
-	protected $house;
-	public function __construct(\House $house)
+	public function __construct()
 	{
 		View::share('menu_active', 'landlord');
 		View::share('h1', '租屋處管理');
-		$this->house = $house;
 	}
 	/**
 	 * Display a listing of the resource.
 	 *
+	 * @param  string  $sn
 	 * @return Response
 	 */
 	public function index($sn)
@@ -37,6 +36,7 @@ class HousesController extends \BaseController {
 	/**
 	 * Show the form for creating a new resource.
 	 *
+	 * @param  string  $sn
 	 * @return Response
 	 */
 	public function create($sn)
@@ -68,36 +68,55 @@ class HousesController extends \BaseController {
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-        return View::make('houses.show');
-	}
-
-	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  string  $sn
+	 * @param  string  $landlord_sn
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($sn, $landlord_sn)
 	{
-        return View::make('houses.edit');
+		try
+		{
+			$h1Small = '修改';
+			$house = \House::where('sn', '=', $sn)->firstOrFail();
+			$landlord = $house->landlord;
+        	return View::make('admin.houses.edit', compact('h1Small', 'landlord', 'house'));
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return Redirect::route('admin.houses.index', array($landlord_sn))->with('message', '無此筆資料，請檢查。');
+		}
+		
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  string  $sn
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($sn)
 	{
 		//
+		try
+		{
+			$house = \House::where('sn', '=', $sn)->firstOrFail();
+			if($house->save())
+			{
+				return Redirect::route('admin.houses.index', $house->landlord->sn)->with('message', "修改完成");
+			}
+			else
+			{
+				return Redirect::route('admin.houses.edit', $sn, $house->landlord->sn)
+					->withInput()
+					->withErrors($house->errors()); 
+			}
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return Redirect::route('admin.landlords.index')->with('message', '無此筆資料，請檢查。');
+		}
 	}
 
 	/**
