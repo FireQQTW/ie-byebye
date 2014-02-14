@@ -38,9 +38,9 @@
     {{ Form::label('address', '地址', array('class' => 'col-sm-3 control-label no-padding-right')) }}
     <div class="col-sm-9">
         <div id="jq_twzip" class="help-margin-bottom-2">
-            <div data-role="county" class="help-inline" data-value="{{Input::old('county')}}"></div>
-            <div data-role="district" class="help-inline" data-value="{{Input::old('district')}}"></div>
-            <div data-role="zipcode" data-style="hide" data-value="{{Input::old('zipcode')}}"></div>
+            <div data-role="county" class="help-inline" data-value="{{$county}}"></div>
+            <div data-role="district" class="help-inline" data-value="{{$district}}"></div>
+            <div data-role="zipcode" data-style="hide" data-value="{{$zipcode}}"></div>
         </div>
         {{ Form::text('address', Input::old('address') ,array('class' => 'col-xs-10 col-sm-5', 'placeholder' => '請輸入地址')) }}
     </div>
