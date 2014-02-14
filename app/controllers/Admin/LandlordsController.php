@@ -1,6 +1,8 @@
 <?php
 namespace Admin;
 use \View, \Model, \Validator, \Input, \Redirect;
+// Model Exception
+use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class LandlordsController extends \BaseController {
 	protected $landlord;
 	public function __construct(\Landlord $landlord)
@@ -68,34 +70,74 @@ class LandlordsController extends \BaseController {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  $sn
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($sn)
 	{
-        return View::make('admin.landlords.edit');
+		try
+		{
+			$landlord = $this->landlord->where('sn', '=', $sn)->firstOrFail();
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return Redirect::route('admin.landlords.index')->with('message', '無此筆資料，請檢查。');
+		}
+		$h1Small = '修改';
+        return View::make('admin.landlords.edit', compact('h1Small', 'landlord'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  int  $sn
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($sn)
 	{
 		//
+		try
+		{
+			$landlord = $this->landlord->where('sn', '=', $sn)->firstOrFail();
+			// if password empty, would not confirm or update password.
+			$landlord::$rules['password'] = (Input::get('password')) ? $landlord::$rules['password'] : '';
+			if($landlord->save())
+			{
+				return Redirect::route('admin.landlords.index')->with('message', "修改完成");
+			}
+			else
+			{
+				return Redirect::route('admin.landlords.edit', $sn)
+					->withInput()
+					->withErrors($landlord->errors()); 
+			}
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return Redirect::route('admin.landlords.index')->with('message', '無此筆資料，請檢查。');
+		}
+
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  int  $key
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($key)
 	{
 		//
+		try
+		{
+			$landlord = $this->landlord->where('sn', '=', $sn)->firstOrFail();
+			$landlord->delete();
+			return Redirect::route('admin.landlords.index')->with('message', "刪除完成");
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return Redirect::route('admin.landlords.index')->with('message', '無此筆資料，請檢查。');
+		}
 	}
 
 }
