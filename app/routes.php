@@ -19,7 +19,14 @@ Route::any('logout', array('as' => 'logout', 'uses' => 'LoginController@logout')
 // index login
 Route::any('login', array('as' => 'index.login', 'uses' => 'LoginController@index'))->before('guest');
 // index room
-Route::any('dashboard', array('as'    =>  'index.dashboard', 'uses'    =>  'IndexController@dashboard'))->before('auth.index');
+Route::group(array('before' =>  'auth.index'), function(){
+    Route::any('dashboard', array('as'    =>  'index.dashboard', 'uses'    =>  'IndexController@dashboard'));
+    // payment
+    Route::get('payment', array('as'   =>  'payment.create', 'uses'    =>  'Payment\PaypalController@payment'));
+    Route::get('payment/success', array('as'   =>  'payment.success', 'uses'    =>  'Payment\PaypalController@payment'));
+    Route::get('payment/cancel', array('as'   =>  'payment.cancel', 'uses'    =>  'Payment\PaypalController@payment'));
+});
+
 
 // admin login
 Route::any('admin/login', array('as' => 'admin.login', 'uses' => 'LoginController@admin'))->before('guest');
