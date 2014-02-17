@@ -26,7 +26,7 @@
                                 {{ HTML::decode('<span class="label label-sm '.$room->getStatusCss().'">'.$room->getStatus().'</span>') }}
                             </td>
                             <td>
-                                {{HTML::decode(link_to_route('admin.users.edit', '<i class="icon-edit bigger-120"></i>儲值', null, array('class' => 'btn btn-xs btn-info')))}}
+                                {{HTML::decode(link_to_route('payment.create', '<i class="icon-edit bigger-120"></i>儲值', null, array('class' => 'btn btn-xs btn-info')))}}
                             </td>
                         </tr>
                     </tbody>
