@@ -1,5 +1,4 @@
 <?php
-
 class IndexController extends BaseController {
 
 	protected $Room;
@@ -7,7 +6,7 @@ class IndexController extends BaseController {
 	{
 		View::share('menu_active', 'landlord');
 		View::share('h1', '房間資訊');
-		$this->Room = $room = Session::get('auth.index');
+		$this->Room = Session::get('auth.index');
 	}
 	/**
 	 * Display a listing of the resource.
