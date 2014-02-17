@@ -114,6 +114,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 		'Casper\Permission\PermissionServiceProvider',
+		'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
 	),
 
 	/*
@@ -181,6 +182,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Breadcrumbs'     => 'DaveJamesMiller\Breadcrumbs\Facade',
 		'Permission'      => 'Casper\Permission\PermissionFacade',
+		'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
 	),
 
 );

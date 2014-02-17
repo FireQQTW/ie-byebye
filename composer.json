@@ -10,7 +10,8 @@
 		"way/generators": "dev-master",
 		"casper/permission": "dev-master",
 		"laravelbook/ardent": "dev-master",
-		"doctrine/dbal": "~2.3"
+		"doctrine/dbal": "~2.3",
+		"anouar/paypalpayment": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
