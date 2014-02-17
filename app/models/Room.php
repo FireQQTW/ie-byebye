@@ -31,4 +31,14 @@ class Room extends \LaravelBook\Ardent\Ardent {
         return true;
     }
 
+    public function getStatus()
+    {
+        return $this->isEnabled ? '啟用' : '停用';
+    }
+
+    public function getStatusCss()
+    {
+        return $this->isEnabled ? 'label-success' : 'label-danger';
+    }
+
 }

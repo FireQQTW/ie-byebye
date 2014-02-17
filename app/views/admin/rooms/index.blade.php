@@ -36,20 +36,26 @@
                                 </label>
                             </td>
                             <td>
-                                {{{ $room->getFullAddress() }}}
+                                {{ $room->name }}
+                            </td>
+                            <td>
+                                {{ $room->billed }}
+                            </td>
+                            <td>
+                                {{ HTML::decode('<span class="label label-sm '.$room->getStatusCss().'">'.$room->getStatus().'</span>') }}
                             </td>
                             <td>
                                 <!-- Desktop -->
                                 <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                    {{Form::open(array('method' => 'DELETE', 'route' => array('admin.houses.rooms.destroy', $landlord->sn, $house->sn), 'class' => 'btn-group'))}}
-                                        {{HTML::decode(link_to_route('admin.houses.rooms.index', '<i class="icon-th bigger-120"></i>房間', array($house->sn), array('class' => 'btn btn-xs btn-info')))}}
-                                        {{HTML::decode(link_to_route('admin.houses.rooms.edit', '<i class="icon-edit bigger-120"></i>編輯', array($landlord->sn, $house->sn), array('class' => 'btn btn-xs btn-success')))}}
+                                    {{Form::open(array('method' => 'DELETE', 'route' => array('admin.houses.rooms.destroy', $house->sn, $room->sn), 'class' => 'btn-group'))}}
+                                        {{HTML::decode(link_to_route('admin.houses.rooms.index', '<i class="icon-th bigger-120"></i>控制器', array($room->sn), array('class' => 'btn btn-xs btn-info')))}}
+                                        {{HTML::decode(link_to_route('admin.houses.rooms.edit', '<i class="icon-edit bigger-120"></i>編輯', array($house->sn, $room->sn), array('class' => 'btn btn-xs btn-success')))}}
                                         {{HTML::ButtonWithIcon('<i class="icon-trash bigger-120"></i>刪除', array('class' => 'btn btn-xs btn-danger', 'type'  =>  'submit')) }}
                                     {{Form::close()}}
                                 </div>
                                 <!-- RWD -->
                                 <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                    {{Form::open(array('method' => 'DELETE', 'route' => array('admin.houses.rooms.destroy', $landlord->sn, $house->sn)))}}
+                                    {{Form::open(array('method' => 'DELETE', 'route' => array('admin.houses.rooms.destroy', $house->sn, $room->sn)))}}
                                         <div class="inline position-relative">
                                             <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
                                                 <i class="icon-cog icon-only bigger-110"></i>
@@ -58,11 +64,11 @@
                                             <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
                                                 <li>
 
-                                                    {{HTML::decode(link_to_route('admin.houses.rooms.index', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($house->sn), array('class' => 'tooltip-info', 'data-rel'    =>  'tooltip', 'title'  =>  '房間')))}}
+                                                    {{HTML::decode(link_to_route('admin.houses.rooms.index', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($room->sn), array('class' => 'tooltip-info', 'data-rel'    =>  'tooltip', 'title'  =>  '控制器')))}}
                                                 </li>
                                                 <li>
 
-                                                    {{HTML::decode(link_to_route('admin.houses.rooms.edit', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($house->sn), array('class' => 'tooltip-success', 'data-rel'    =>  'tooltip', 'title'  =>  '編輯')))}}
+                                                    {{HTML::decode(link_to_route('admin.houses.rooms.edit', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($house->sn, $room->sn), array('class' => 'tooltip-success', 'data-rel'    =>  'tooltip', 'title'  =>  '編輯')))}}
                                                 </li>
 
                                                 <li>
