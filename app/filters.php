@@ -33,9 +33,10 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
+Route::filter('auth.index', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+    $room = Session::get('auth.index', null);
+    if($room == null) return Redirect::route('index.login');
 });
 
 
@@ -43,8 +44,6 @@ Route::filter('auth.admin', function(){
     if(Auth::guest()) return Redirect::route('admin.login');
     // Permission Verify
     Permission::verify();
-
-
 });
 
 Route::filter('auth.basic', function()

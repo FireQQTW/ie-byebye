@@ -15,15 +15,16 @@ Route::get('/', function()
     return View::make('hello');
 });
 
-Route::any('login', array('as' => 'member.login', 'uses' => 'LoginController@index'));
-
 Route::any('logout', array('as' => 'logout', 'uses' => 'LoginController@logout'));
+// index login
+Route::any('login', array('as' => 'index.login', 'uses' => 'LoginController@index'))->before('guest');
+// index room
+Route::any('dashboard', array('as'    =>  'index.dashboard', 'uses'    =>  'IndexController@dashboard'))->before('auth.index');
 
-
-//admin login
-Route::any('admin/login', array('as' => 'admin.login', 'uses' => 'LoginController@admin'));
-#admin route
- Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function(){
+// admin login
+Route::any('admin/login', array('as' => 'admin.login', 'uses' => 'LoginController@admin'))->before('guest');
+// admin route
+Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function(){
     // Dashboard
     Route::any('index', array( 'as' => 'admin.index' ,'uses' => 'Admin\DashboardController@index'));
     // 管理者設定
