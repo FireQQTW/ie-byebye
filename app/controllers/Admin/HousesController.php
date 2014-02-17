@@ -86,7 +86,7 @@ class HousesController extends \BaseController {
 		}
 		catch (ModelNotFoundException $e)
 		{
-			return Redirect::route('admin.landlords.houses.index', array($landlord_sn))->with('message', '無此筆資料，請檢查。');
+			return Redirect::route('admin.landlords.houses.index', $landlord_sn)->with('message', '無此筆資料，請檢查。');
 		}
 		
 	}
@@ -116,7 +116,7 @@ class HousesController extends \BaseController {
 		}
 		catch (ModelNotFoundException $e)
 		{
-			return Redirect::route('admin.landlords.index')->with('message', '無此筆資料，請檢查。');
+			return Redirect::route('admin.landlords.houses.index', $landlord_sn)->with('message', '無此筆資料，請檢查。');
 		}
 	}
 
