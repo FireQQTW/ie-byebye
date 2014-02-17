@@ -60,7 +60,7 @@
                                                 </li>
                                                 <li>
 
-                                                    {{HTML::decode(link_to_route('admin.landlords.houses.edit', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($house->sn), array('class' => 'tooltip-success', 'data-rel'    =>  'tooltip', 'title'  =>  '編輯')))}}
+                                                    {{HTML::decode(link_to_route('admin.landlords.houses.edit', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($landlord->sn, $house->sn), array('class' => 'tooltip-success', 'data-rel'    =>  'tooltip', 'title'  =>  '編輯')))}}
                                                 </li>
 
                                                 <li>
