@@ -6,22 +6,22 @@
  * @version 1.0.0.0
  */
 
-Breadcrumbs::register('home', function($breadcrumbs) {
+Breadcrumbs::register('admin.home', function($breadcrumbs) {
     $breadcrumbs->push('Home', route('admin.index'));
 });
 
-Breadcrumbs::register('dashboard', function($breadcrumbs) {
-	$breadcrumbs->parent('home');
+Breadcrumbs::register('admin.dashboard', function($breadcrumbs) {
+	$breadcrumbs->parent('admin.home');
     $breadcrumbs->push('Dashboard', route('admin.index'));
 });
 
-Breadcrumbs::register('security', function($breadcrumbs) {
-	$breadcrumbs->parent('home');
+Breadcrumbs::register('admin.security', function($breadcrumbs) {
+	$breadcrumbs->parent('admin.home');
     $breadcrumbs->push('安全性設定', '#');
 });
 // user
 Breadcrumbs::register('admin.users', function($breadcrumbs) {
-	$breadcrumbs->parent('security');
+	$breadcrumbs->parent('admin.security');
     $breadcrumbs->push('管理者設定', route('admin.users.index'));
 });
 
@@ -41,7 +41,7 @@ Breadcrumbs::register('admin.users.assign', function($breadcrumbs, $user){
 });
 // roles
 Breadcrumbs::register('admin.roles', function($breadcrumbs){
-	$breadcrumbs->parent('security');
+	$breadcrumbs->parent('admin.security');
     $breadcrumbs->push('角色設定', route('admin.roles.index'));
 });
 
@@ -117,4 +117,16 @@ Breadcrumbs::register('admin.houses.rooms.create', function($breadcrumbs, $house
 Breadcrumbs::register('admin.houses.rooms.edit', function($breadcrumbs, $house){
     $breadcrumbs->parent('admin.houses.rooms', $house);
     $breadcrumbs->push('房間修改', route('admin.houses.rooms.edit'));
+});
+
+
+
+/* user */
+Breadcrumbs::register('index.home', function($breadcrumbs) {
+    $breadcrumbs->push('Home', route('index.dashboard'));
+});
+
+Breadcrumbs::register('index.dashboard', function($breadcrumbs) {
+    $breadcrumbs->parent('index.home');
+    $breadcrumbs->push('Dashboard', route('index.dashboard'));
 });
