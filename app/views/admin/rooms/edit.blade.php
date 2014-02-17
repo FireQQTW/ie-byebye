@@ -1,10 +1,10 @@
 @extends('layouts.admin')
-@section('breadcrumbs', Breadcrumbs::render('admin.landlords.houses.edit', $landlord))
+@section('breadcrumbs', Breadcrumbs::render('admin.houses.rooms.edit', $house))
 @section('asset-js')
-	{{HTML::script('/admin/js/landlord/form.js')}}
+	{{HTML::script('/admin/js/houses/form.js')}}
 @stop
 @section('main')
-	{{ Form::model($house, array('method'   =>  'PATCH', 'route' => array('admin.landlords.houses.update', $landlord->sn, $house->sn), 'class' => 'form-horizontal', 'role' => 'form')) }}
-		@include('admin/houses/_partials/_form', ['submit_text' => '儲存', 'county'  =>  $house->county, 'district'   =>  $house->district, 'zipcode'  =>  $house->zipcode])
+	{{ Form::model($room, array('method'   =>  'PATCH', 'route' => array('admin.houses.rooms.update', $house->sn, $room->sn), 'class' => 'form-horizontal', 'role' => 'form')) }}
+		@include('admin/rooms/_partials/_form', ['submit_text' => '儲存'])
 	{{ Form::close() }}
 @stop
