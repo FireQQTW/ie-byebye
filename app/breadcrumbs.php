@@ -114,7 +114,7 @@ Breadcrumbs::register('admin.houses.rooms.create', function($breadcrumbs, $house
     $breadcrumbs->parent('admin.houses.rooms', $house);
     $breadcrumbs->push('房間新增', route('admin.houses.rooms.create'));
 });
-Breadcrumbs::register('admin.houses.room.edit', function($breadcrumbs, $house){
+Breadcrumbs::register('admin.houses.rooms.edit', function($breadcrumbs, $house){
     $breadcrumbs->parent('admin.houses.rooms', $house);
     $breadcrumbs->push('房間修改', route('admin.houses.rooms.edit'));
 });
