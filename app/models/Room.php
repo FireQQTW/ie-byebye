@@ -3,11 +3,18 @@
 class Room extends \LaravelBook\Ardent\Ardent {
     protected $table = 'rooms';
 	protected $guarded = array('_token');
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = array('password');
     public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
     public $forceEntityHydrationFromInput = true; // hydrates whenever validation is called
     public static $passwordAttributes  = array('password');
     public $autoHashPasswordAttributes = true;
     public $autoPurgeRedundantAttributes = true;
+
     // rules & messages
     public static $rules = array('name'  =>  'required',
                                 'billed'   =>  'required|integer',
@@ -17,6 +24,12 @@ class Room extends \LaravelBook\Ardent\Ardent {
     public static $customMessages =array('required'    =>  '請輸入 :attribute',
                                           'confirmed'   =>  '密碼比對失敗',
                                           'integer' =>  '請輸入數字');
+    // login rule & message
+    public static $loginRules = array('username'    =>  'required',
+                                       'password'   =>  'required');
+    
+    public static $loginMessages = array('username.required' =>  '請輸入帳號',
+                                            'password.required' =>  '請輸入密碼');
 
     // relationship
     public static $relationsData = array(
