@@ -56,7 +56,7 @@ class LoginController extends BaseController {
 			$message = "";
 			try
 			{
-				if(Auth::user()->attempt($authAttempt))
+				if(Auth::attempt($authAttempt))
 					return Redirect::route('admin.index');
 				else
 					return Redirect::route('admin.login')->withErrors($validation)->withInput();
