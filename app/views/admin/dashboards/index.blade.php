@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('breadcrumbs', Breadcrumbs::render('dashboard'))
+@section('breadcrumbs', Breadcrumbs::render('admin.dashboard'))
 @section('main')
     <!-- PAGE CONTENT BEGINS -->
 
