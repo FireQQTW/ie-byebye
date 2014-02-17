@@ -43,7 +43,7 @@ class RoomsController extends \BaseController {
 	{
 		$h1Small = '新增';
 		$house = \House::where('sn', '=', $house_sn)->firstOrFail();
-        return View::make('admin.houses.create', compact('h1Small', 'house'));
+        return View::make('admin.rooms.create', compact('h1Small', 'house'));
 	}
 
 	/**
@@ -75,18 +75,18 @@ class RoomsController extends \BaseController {
 	 * @param  string  $sn
 	 * @return Response
 	 */
-	public function edit($landlord_sn, $sn)
+	public function edit($house_sn, $sn)
 	{
 		try
 		{
 			$h1Small = '修改';
-			$house = \House::where('sn', '=', $sn)->firstOrFail();
-			$landlord = $house->landlord;
-        	return View::make('admin.houses.edit', compact('h1Small', 'landlord', 'house'));
+			$room = \Room::where('sn', '=', $sn)->firstOrFail();
+			$house = $room->house;
+        	return View::make('admin.rooms.edit', compact('h1Small', 'house', 'room'));
 		}
 		catch (ModelNotFoundException $e)
 		{
-			return Redirect::route('admin.landlords.houses.index', array($landlord_sn))->with('message', '無此筆資料，請檢查。');
+			return Redirect::route('admin.houses.rooms.index', $house_sn)->with('message', '無此筆資料，請檢查。');
 		}
 		
 	}
@@ -97,26 +97,26 @@ class RoomsController extends \BaseController {
 	 * @param  string  $sn
 	 * @return Response
 	 */
-	public function update($landlord_sn, $sn)
+	public function update($house_sn, $sn)
 	{
 		//
 		try
 		{
-			$house = \House::where('sn', '=', $sn)->firstOrFail();
-			if($house->save())
+			$room = \Room::where('sn', '=', $sn)->firstOrFail();
+			if($room->save())
 			{
-				return Redirect::route('admin.landlords.houses.index', $house->landlord->sn)->with('message', "修改完成");
+				return Redirect::route('admin.houses.rooms.index', $room->house->sn)->with('message', "修改完成");
 			}
 			else
 			{
-				return Redirect::route('admin.landlords.houses.edit', $sn, $house->landlord->sn)
+				return Redirect::route('admin.houses.rooms.edit', $sn, $room->house->sn)
 					->withInput()
-					->withErrors($house->errors()); 
+					->withErrors($room->errors()); 
 			}
 		}
 		catch (ModelNotFoundException $e)
 		{
-			return Redirect::route('admin.landlords.index')->with('message', '無此筆資料，請檢查。');
+			return Redirect::route('admin.houses.rooms.index', $house_sn)->with('message', '無此筆資料，請檢查。');
 		}
 	}
 
@@ -126,17 +126,17 @@ class RoomsController extends \BaseController {
 	 * @param  string  $sn
 	 * @return Response
 	 */
-	public function destroy($landlord_sn, $sn)
+	public function destroy($house_sn, $sn)
 	{
 		try
 		{
-			$house = \House::where('sn', '=', $sn)->firstOrFail();
-			$house->delete();
-			return Redirect::route('admin.landlords.houses.index', $landlord_sn)->with('message', "刪除完成");
+			$room = \Room::where('sn', '=', $sn)->firstOrFail();
+			$room->delete();
+			return Redirect::route('admin.houses.rooms.index', $house_sn)->with('message', "刪除完成");
 		}
 		catch (ModelNotFoundException $e)
 		{
-			return Redirect::route('admin.landlords.houses.index', $landlord_sn)->with('message', '無此筆資料，請檢查。');
+			return Redirect::route('admin.houses.rooms.index', $house_sn)->with('message', '無此筆資料，請檢查。');
 		}
 	}
 
