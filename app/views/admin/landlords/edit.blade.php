@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('breadcrumbs', Breadcrumbs::render('admin.landlords.create'))
+@section('breadcrumbs', Breadcrumbs::render('admin.landlords.edit'))
 @section('asset-js')
 	{{HTML::script('/admin/js/landlord/form.js')}}
 @stop
