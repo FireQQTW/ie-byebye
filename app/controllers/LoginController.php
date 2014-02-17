@@ -8,7 +8,34 @@ class LoginController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('logins.index');
+		if(Input::server("REQUEST_METHOD") == "POST")
+		{
+			
+			$validation = Validator::make(Input::all(), \Room::$loginRules, \Room::$loginMessages);
+			if($validation->fails())
+				return Redirect::route('index.login')->withErrors($validation)->withInput();
+
+			// find user. login with rooms.
+			$username = Input::get('username');
+			$password = Input::get('password');
+			try
+			{
+				$room = \Room::where('username', $username)->firstOrFail();
+				if($room->isEnabled == false)
+					return Redirect::route('index.login')->with('message', '帳號已被停用');
+
+				if(!Hash::check($password, $room->password))
+					return Redirect::route('index.login')->with('message', '帳號或密碼錯誤(120)');
+				// login success
+				Session::put('auth.index', $room);
+				return Redirect::route('index.dashboard');
+			}
+			catch (ModelNotFoundException $e)
+			{
+				return Redirect::route('index.login')->with('message', '帳號或密碼錯誤(100)');
+			}
+		}
+        return View::make('login.index');
 	}
 
 	
@@ -29,7 +56,7 @@ class LoginController extends BaseController {
 			$message = "";
 			try
 			{
-				if(Auth::attempt($authAttempt))
+				if(Auth::user()->attempt($authAttempt))
 					return Redirect::route('admin.index');
 				else
 					return Redirect::route('admin.login')->withErrors($validation)->withInput();
