@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://le2.sleepingdesign.com/',
 
 	/**
 	 * Web Site Name

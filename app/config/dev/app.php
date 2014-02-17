@@ -26,5 +26,5 @@ return array(
 	|
 	*/
 
-	'url' => 'http://public.dev/',
+	'url' => 'http://le-laravel.dev/',
 );

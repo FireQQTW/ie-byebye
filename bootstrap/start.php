@@ -24,7 +24,8 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 $env = $app->detectEnvironment(array(
-    'dev'   =>  array('*.dev', 'casper-pc')
+    'dev'   =>  array('*.dev', 'casper-pc'),
+    'production'    =>  array('le2.sleepingdesign.com');
 
 ));
 
