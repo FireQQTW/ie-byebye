@@ -127,7 +127,7 @@
                         </ul>
                         <li>
                              <a href="{{URL::route('admin.landlords.index')}}">
-                                <i class=""></i>
+                                <i class="icon-home"></i>
                                 <span class="menu-text">房東管理</span>
                             </a>
                         </li>
