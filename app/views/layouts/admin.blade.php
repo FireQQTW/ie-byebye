@@ -19,7 +19,7 @@
                 <a href="#" class="navbar-brand">
                     <small>
                         <i class="icon-leaf"></i>
-                        {{Config::get('app.site')}} Admin
+                        {{Config::get('app.site')}}
                     </small>
                 </a>
                 <!-- /.brand -->

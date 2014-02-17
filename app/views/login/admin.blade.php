@@ -21,9 +21,9 @@
 								<h1>
 									<i class="icon-leaf green"></i>
 									<span class="red"><?=Config::get('app.site');?></span>
-									<span class="white">Login</span>
+									<span class="white">後端登入</span>
 								</h1>
-								<h4 class="blue">&copy; SleepingDesign</h4>
+								<!-- <h4 class="blue">&copy; SleepingDesign</h4> -->
 							</div>
 
 							<div class="space-6"></div>
