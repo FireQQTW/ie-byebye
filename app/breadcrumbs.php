@@ -102,10 +102,10 @@ Breadcrumbs::register('admin.landlords.houses.create', function($breadcrumbs, $l
 });
 Breadcrumbs::register('admin.landlords.houses.edit', function($breadcrumbs, $landlord){
     $breadcrumbs->parent('admin.landlords.houses', $landlord);
-    $breadcrumbs->push('租屋處修改', route('admin.landlords.houses.edit'));
+    $breadcrumbs->push('租屋處新增', route('admin.landlords.houses.edit'));
 });
 
-// houses
+// rooms
 Breadcrumbs::register('admin.houses.rooms', function($breadcrumbs, $house){
     $breadcrumbs->parent('admin.landlords.houses', $house->landlord);
     $breadcrumbs->push('房間管理', route('admin.houses.rooms.index', $house->sn));
@@ -114,7 +114,7 @@ Breadcrumbs::register('admin.houses.rooms.create', function($breadcrumbs, $house
     $breadcrumbs->parent('admin.houses.rooms', $house);
     $breadcrumbs->push('房間新增', route('admin.houses.rooms.create'));
 });
-Breadcrumbs::register('admin.landlords.houses.edit', function($breadcrumbs, $house){
+Breadcrumbs::register('admin.houses.room.edit', function($breadcrumbs, $house){
     $breadcrumbs->parent('admin.houses.rooms', $house);
     $breadcrumbs->push('房間修改', route('admin.houses.rooms.edit'));
 });
