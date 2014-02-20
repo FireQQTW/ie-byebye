@@ -26,7 +26,7 @@ class CreatePmusTable extends Migration {
 			$table->integer('use_minute')->default(0);
 			$table->integer('last_minute')->default(0);
 			$table->boolean('isEnabled')->default(1);
-			$table->datetime('mu_dt');
+			$table->datetime('mu_dt')->nullable();
 			$table->timestamps();
 		});
 	}
