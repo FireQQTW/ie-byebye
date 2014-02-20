@@ -45,13 +45,13 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function(){
     // 權限設定
     Route::resource('permissions', 'Admin\PermissionsController');
     // Landlord
-    Route::resource('landlords', 'Admin\LandlordsController', array('except' => array('show')));
+    Route::resource('landlords', 'Admin\LandlordsController');
     // Houses
-    Route::resource('landlords.houses', 'Admin\HousesController', array('except' => array('show')));
+    Route::resource('landlords.houses', 'Admin\HousesController');
     // Rooms
-    Route::resource('houses.rooms', 'Admin\RoomsController', array('except' => array('show')));
+    Route::resource('houses.rooms', 'Admin\RoomsController');
     // Rooms
-    Route::resource('rooms.pmus', 'Admin\PmusController', array('except' => array('show')));
+    Route::resource('rooms.pmus', 'Admin\PmusController');
  });
 
 
