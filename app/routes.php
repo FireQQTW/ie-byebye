@@ -20,11 +20,11 @@ Route::any('logout', array('as' => 'logout', 'uses' => 'LoginController@logout')
 Route::any('login', array('as' => 'index.login', 'uses' => 'LoginController@index'))->before('guest');
 // index room
 Route::group(array('before' =>  'auth.index'), function(){
-    Route::any('dashboard', array('as'    =>  'index.dashboard', 'uses'    =>  'IndexController@dashboard'));
+    Route::any('dashboard', array('as' =>  'index.dashboard', 'uses' => 'IndexController@dashboard'));
     // payment
-    Route::get('payment', array('as'   =>  'payment.create', 'uses'    =>  'Payment\PaypalController@payment'));
-    Route::get('payment/success', array('as'   =>  'payment.success', 'uses'    =>  'Payment\PaypalController@payment'));
-    Route::get('payment/cancel', array('as'   =>  'payment.cancel', 'uses'    =>  'Payment\PaypalController@payment'));
+    Route::get('payment', array('as'   =>  'payment.create', 'uses' =>  'Payment\PaypalController@payment'));
+    Route::get('payment/success', array('as'   =>  'payment.success', 'uses' =>  'Payment\PaypalController@payment'));
+    Route::get('payment/cancel', array('as'   =>  'payment.cancel', 'uses' =>  'Payment\PaypalController@payment'));
 });
 
 
@@ -45,13 +45,13 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function(){
     // 權限設定
     Route::resource('permissions', 'Admin\PermissionsController');
     // Landlord
-    Route::resource('landlords', 'Admin\LandlordsController', array('except'    =>  array('show')));
+    Route::resource('landlords', 'Admin\LandlordsController', array('except' => array('show')));
     // Houses
-    Route::resource('landlords.houses', 'Admin\HousesController', array('except'    =>  array('show')));
+    Route::resource('landlords.houses', 'Admin\HousesController', array('except' => array('show')));
     // Rooms
-    Route::resource('houses.rooms', 'Admin\RoomsController', array('except'    =>  array('show')));
+    Route::resource('houses.rooms', 'Admin\RoomsController', array('except' => array('show')));
     // Rooms
-    Route::resource('rooms.pmus', 'Admin\PmusController', array('except'    =>  array('show')));
+    Route::resource('rooms.pmus', 'Admin\PmusController', array('except' => array('show')));
  });
 
 
