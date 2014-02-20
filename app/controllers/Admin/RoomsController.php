@@ -1,6 +1,6 @@
 <?php
 namespace Admin;
-use \View, \Model, \Validator, \Input, \Redirect;
+use \View, \Model, \Validator, \Input, \Redirect, \URL;
 // Model Exception
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class RoomsController extends \BaseController {
@@ -29,8 +29,6 @@ class RoomsController extends \BaseController {
 		{
 			return Redirect::route('admin.landlords.houses.index', $house_sn)->with('message', '無此筆資料，請檢查。');
 		}
-		
-		
 	}
 
 	/**
@@ -66,6 +64,22 @@ class RoomsController extends \BaseController {
 				->withInput()
 				->withErrors($room->errors()); 
 		}
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  string  $house_sn
+	 * @param  string  $sn
+	 * @return Response
+	 */
+	public function show($house_sn, $sn)
+	{
+        $h1Small = '當前搜尋結果<br /><a href="'.URL::route('admin.houses.rooms.index', $house_sn).'">返回列表</a>';
+        $room = \Room::where('sn', '=', $sn)->firstOrFail();
+        $rooms = array($room);
+        $house = $room->house;
+        return View::make('admin.rooms.index', compact('h1Small', 'house', 'rooms'));
 	}
 
 	/**
@@ -105,7 +119,7 @@ class RoomsController extends \BaseController {
 			$room = \Room::where('sn', '=', $sn)->firstOrFail();
 			if($room->save())
 			{
-				return Redirect::route('admin.houses.rooms.index', $room->house->sn)->with('message', "修改完成");
+				return Redirect::route('admin.houses.rooms.show', array($house_sn, $sn))->with('message', "修改完成");
 			}
 			else
 			{

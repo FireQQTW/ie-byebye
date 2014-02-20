@@ -1,6 +1,6 @@
 <?php
 namespace Admin;
-use \View, \Model, \Validator, \Input, \Redirect;
+use \View, \Model, \Validator, \Input, \Redirect, \URL;
 // Model Exception
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class LandlordsController extends \BaseController {
@@ -55,6 +55,20 @@ class LandlordsController extends \BaseController {
 	}
 
 	/**
+	 * Display the specified resource.
+	 *
+	 * @param  string  $sn
+	 * @return Response
+	 */
+	public function show($sn)
+	{
+        $h1Small = '當前搜尋結果<br /><a href="'.URL::route('admin.landlords.index').'">返回列表</a>';
+        $landlord = \Landlord::where('sn', '=', $sn)->firstOrFail();
+        $landlords = array($landlord);
+        return View::make('admin.landlords.index', compact('h1Small', 'landlords'));
+	}
+
+	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  string  $sn
@@ -90,7 +104,7 @@ class LandlordsController extends \BaseController {
 			$landlord::$rules['password'] = (Input::get('password')) ? $landlord::$rules['password'] : '';
 			if($landlord->save())
 			{
-				return Redirect::route('admin.landlords.index')->with('message', "修改完成");
+				return Redirect::route('admin.landlords.show', $sn)->with('message', "修改完成");
 			}
 			else
 			{

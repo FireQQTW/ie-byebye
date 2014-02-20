@@ -1,6 +1,6 @@
 <?php
 namespace Admin;
-use \View, \Model, \Validator, \Input, \Redirect;
+use \View, \Model, \Validator, \Input, \Redirect, \URL;
 // Model Exception
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class PmusController extends \BaseController {
@@ -29,8 +29,6 @@ class PmusController extends \BaseController {
 		{
 			return Redirect::route('admin.houses.rooms.index', $room_sn)->with('message', '無此筆資料，請檢查。');
 		}
-		
-		
 	}
 
 	/**
@@ -66,6 +64,22 @@ class PmusController extends \BaseController {
 				->withInput()
 				->withErrors($pmu->errors()); 
 		}
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  string  $rooms_sn
+	 * @param  string  $sn
+	 * @return Response
+	 */
+	public function show($rooms_sn, $sn)
+	{
+        $h1Small = '當前搜尋結果<br /><a href="'.URL::route('admin.rooms.pmus.index', $rooms_sn).'">返回列表</a>';
+        $pmu = \Pmu::where('sn', '=', $sn)->firstOrFail();
+        $pmus = array($pmu);
+        $room = $pmu->room;
+        return View::make('admin.pmus.index', compact('h1Small', 'room', 'pmus'));
 	}
 
 	/**
@@ -106,7 +120,7 @@ class PmusController extends \BaseController {
 			$pmu = \Pmu::where('sn', '=', $sn)->firstOrFail();
 			if($pmu->save())
 			{
-				return Redirect::route('admin.rooms.pmus.index', $pmu->room->sn)->with('message', "修改完成");
+				return Redirect::route('admin.rooms.pmus.show', array($room_sn, $sn))->with('message', "修改完成");
 			}
 			else
 			{

@@ -1,6 +1,6 @@
 <?php
 namespace Admin;
-use \View, \Model, \Validator, \Input, \Redirect;
+use \View, \Model, \Validator, \Input, \Redirect, \URL;
 // Model Exception
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class HousesController extends \BaseController {
@@ -28,9 +28,7 @@ class HousesController extends \BaseController {
 		catch (ModelNotFoundException $e)
 		{
 			return Redirect::route('admin.landlords.index')->with('message', '無此筆資料，請檢查。');
-		}
-		
-		
+		}		
 	}
 
 	/**
@@ -69,6 +67,22 @@ class HousesController extends \BaseController {
 	}
 
 	/**
+	 * Display the specified resource.
+	 *
+	 * @param  string  $landlord_sn
+	 * @param  string  $sn
+	 * @return Response
+	 */
+	public function show($landlord_sn, $sn)
+	{
+        $h1Small = '當前搜尋結果<br /><a href="'.URL::route('admin.landlords.houses.index', $landlord_sn).'">返回列表</a>';
+        $house = \House::where('sn', '=', $sn)->firstOrFail();
+        $houses = array($house);
+        $landlord = $house->landlord;
+        return View::make('admin.houses.index', compact('h1Small', 'landlord', 'houses'));
+	}
+
+	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  string  $landlord_sn
@@ -94,6 +108,7 @@ class HousesController extends \BaseController {
 	/**
 	 * Update the specified resource in storage.
 	 *
+	 * @param  string  $landlord_sn
 	 * @param  string  $sn
 	 * @return Response
 	 */
@@ -105,7 +120,7 @@ class HousesController extends \BaseController {
 			$house = \House::where('sn', '=', $sn)->firstOrFail();
 			if($house->save())
 			{
-				return Redirect::route('admin.landlords.houses.index', $house->landlord->sn)->with('message', "修改完成");
+				return Redirect::route('admin.landlords.houses.show', array($landlord_sn, $sn))->with('message', "修改完成");
 			}
 			else
 			{
@@ -123,6 +138,7 @@ class HousesController extends \BaseController {
 	/**
 	 * Remove the specified resource from storage.
 	 *
+	 * @param  string  $landlord_sn
 	 * @param  string  $sn
 	 * @return Response
 	 */
