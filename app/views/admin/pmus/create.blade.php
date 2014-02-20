@@ -1,10 +1,10 @@
 @extends('layouts.admin')
-@section('breadcrumbs', Breadcrumbs::render('admin.houses.rooms.create', $house))
+@section('breadcrumbs', Breadcrumbs::render('admin.rooms.pmus.create', $room))
 @section('asset-js')
-	{{HTML::script('/admin/js/houses/form.js')}}
+	
 @stop
 @section('main')
-	{{ Form::model(new \House, array('route' => array('admin.houses.rooms.store', $house->sn), 'class' => 'form-horizontal', 'role' => 'form')) }}
-        @include('admin/rooms/_partials/_form', ['submit_text' => '儲存'])
+	{{ Form::model(new \Pmu, array('route' => array('admin.rooms.pmus.store', $room->sn), 'class' => 'form-horizontal', 'role' => 'form')) }}
+        @include('admin/pmus/_partials/_form', ['submit_text' => '儲存'])
 	{{ Form::close() }}
 @stop

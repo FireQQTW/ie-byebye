@@ -36,57 +36,57 @@ class PmusController extends \BaseController {
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @param  string  $house_sn
+	 * @param  string  $room_sn
 	 * @return Response
 	 */
-	public function create($house_sn)
+	public function create($room_sn)
 	{
 		$h1Small = '新增';
-		$house = \House::where('sn', '=', $house_sn)->firstOrFail();
-        return View::make('admin.rooms.create', compact('h1Small', 'house'));
+		$room = \Room::where('sn', '=', $room_sn)->firstOrFail();
+        return View::make('admin.pmus.create', compact('h1Small', 'room'));
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  string  $house_sn
+	 * @param  string  $rooms_sn
 	 * @return Response
 	 */
-	public function store($house_sn)
+	public function store($rooms_sn)
 	{
 		//
-		$room = new \Room;
-		if($room->save())
+		$pmu = new \Pmu;
+		if($pmu->save())
 		{
-			return Redirect::route('admin.houses.rooms.index', $house_sn)->with('message', "新增完成");
+			return Redirect::route('admin.rooms.pmus.index', $rooms_sn)->with('message', "新增完成");
 		}
 		else
 		{
-			return Redirect::route('admin.houses.rooms.create', $house_sn)
+			return Redirect::route('admin.rooms.pmus.create', $rooms_sn)
 				->withInput()
-				->withErrors($room->errors()); 
+				->withErrors($pmu->errors()); 
 		}
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  string  $landlord_sn
+	 * @param  string  $room_sn
 	 * @param  string  $sn
 	 * @return Response
 	 */
-	public function edit($house_sn, $sn)
+	public function edit($room_sn, $sn)
 	{
 		try
 		{
 			$h1Small = '修改';
-			$room = \Room::where('sn', '=', $sn)->firstOrFail();
-			$house = $room->house;
-        	return View::make('admin.rooms.edit', compact('h1Small', 'house', 'room'));
+			$pmu = \Pmu::where('sn', '=', $sn)->firstOrFail();
+			$room = $pmu->room;
+        	return View::make('admin.pmus.edit', compact('h1Small', 'room', 'pmu'));
 		}
 		catch (ModelNotFoundException $e)
 		{
-			return Redirect::route('admin.houses.rooms.index', $house_sn)->with('message', '無此筆資料，請檢查。');
+			return Redirect::route('admin.rooms.pmus.index', $room_sn)->with('message', '無此筆資料，請檢查。');
 		}
 		
 	}
@@ -94,49 +94,51 @@ class PmusController extends \BaseController {
 	/**
 	 * Update the specified resource in storage.
 	 *
+	 * @param  string  $room_sn
 	 * @param  string  $sn
 	 * @return Response
 	 */
-	public function update($house_sn, $sn)
+	public function update($room_sn, $sn)
 	{
 		//
 		try
 		{
-			$room = \Room::where('sn', '=', $sn)->firstOrFail();
-			if($room->save())
+			$pmu = \Pmu::where('sn', '=', $sn)->firstOrFail();
+			if($pmu->save())
 			{
-				return Redirect::route('admin.houses.rooms.index', $room->house->sn)->with('message', "修改完成");
+				return Redirect::route('admin.rooms.pmus.index', $pmu->room->sn)->with('message', "修改完成");
 			}
 			else
 			{
-				return Redirect::route('admin.houses.rooms.edit', $sn, $room->house->sn)
+				return Redirect::route('admin.rooms.pmus.edit', array($room_sn, $sn))
 					->withInput()
 					->withErrors($room->errors()); 
 			}
 		}
 		catch (ModelNotFoundException $e)
 		{
-			return Redirect::route('admin.houses.rooms.index', $house_sn)->with('message', '無此筆資料，請檢查。');
+			return Redirect::route('admin.rooms.pmus.index', $room_sn)->with('message', '無此筆資料，請檢查。');
 		}
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
+	 * @param  string  $room_sn
 	 * @param  string  $sn
 	 * @return Response
 	 */
-	public function destroy($house_sn, $sn)
+	public function destroy($room_sn, $sn)
 	{
 		try
 		{
-			$room = \Room::where('sn', '=', $sn)->firstOrFail();
-			$room->delete();
-			return Redirect::route('admin.houses.rooms.index', $house_sn)->with('message', "刪除完成");
+			$pmu = \Pmu::where('sn', '=', $sn)->firstOrFail();
+			$pmu->delete();
+			return Redirect::route('admin.rooms.pmus.index', $room_sn)->with('message', "刪除完成");
 		}
 		catch (ModelNotFoundException $e)
 		{
-			return Redirect::route('admin.houses.rooms.index', $house_sn)->with('message', '無此筆資料，請檢查。');
+			return Redirect::route('admin.rooms.pmus.index', $room_sn)->with('message', '無此筆資料，請檢查。');
 		}
 	}
 

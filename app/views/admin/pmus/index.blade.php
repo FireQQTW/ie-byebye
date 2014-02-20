@@ -52,7 +52,7 @@
                                 <!-- Desktop -->
                                 <div class="visible-md visible-lg hidden-sm hidden-xs">
                                     {{Form::open(array('method' => 'DELETE', 'route' => array('admin.rooms.pmus.destroy', $room->sn, $pmu->sn), 'class' => 'btn-group'))}}
-                                        {{HTML::decode(link_to_route('admin.rooms.pmus.index', '<i class="icon-th bigger-120"></i>控制器', array($pmu->sn), array('class' => 'btn btn-xs btn-info')))}}
+                                        {{HTML::decode(link_to_route('admin.rooms.pmus.index', '<i class="icon-th bigger-120"></i>控制器狀態', array($pmu->sn), array('class' => 'btn btn-xs btn-info')))}}
                                         {{HTML::decode(link_to_route('admin.rooms.pmus.edit', '<i class="icon-edit bigger-120"></i>編輯', array($room->sn, $pmu->sn), array('class' => 'btn btn-xs btn-success')))}}
                                         {{HTML::ButtonWithIcon('<i class="icon-trash bigger-120"></i>刪除', array('class' => 'btn btn-xs btn-danger', 'type'  =>  'submit')) }}
                                     {{Form::close()}}
@@ -68,7 +68,7 @@
                                             <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
                                                 <li>
 
-                                                    {{HTML::decode(link_to_route('admin.rooms.pmus.index', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($pmu->sn), array('class' => 'tooltip-info', 'data-rel'    =>  'tooltip', 'title'  =>  '控制器')))}}
+                                                    {{HTML::decode(link_to_route('admin.rooms.pmus.index', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($pmu->sn), array('class' => 'tooltip-info', 'data-rel'    =>  'tooltip', 'title'  =>  '控制器狀態')))}}
                                                 </li>
                                                 <li>
 
