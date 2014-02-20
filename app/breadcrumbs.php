@@ -119,6 +119,20 @@ Breadcrumbs::register('admin.houses.rooms.edit', function($breadcrumbs, $house){
     $breadcrumbs->push('房間修改', route('admin.houses.rooms.edit'));
 });
 
+// pmus
+Breadcrumbs::register('admin.rooms.pmus', function($breadcrumbs, $room){
+    $breadcrumbs->parent('admin.houses.rooms', $room->house);
+    $breadcrumbs->push('控制器管理', route('admin.rooms.pums.index', $house->sn));
+});
+Breadcrumbs::register('admin.houses.rooms.create', function($breadcrumbs, $room){
+    $breadcrumbs->parent('admin.houses.rooms', $room->house);
+    $breadcrumbs->push('控制器新增', route('admin.rooms.pmus.create'));
+});
+Breadcrumbs::register('admin.houses.rooms.edit', function($breadcrumbs, $room){
+    $breadcrumbs->parent('admin.houses.rooms', $room->house);
+    $breadcrumbs->push('控制器修改', route('admin.rooms.pmus.edit'));
+});
+
 
 
 /* user */

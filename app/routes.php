@@ -50,6 +50,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function(){
     Route::resource('landlords.houses', 'Admin\HousesController', array('except'    =>  array('show')));
     // Rooms
     Route::resource('houses.rooms', 'Admin\RoomsController', array('except'    =>  array('show')));
+    // Rooms
+    Route::resource('rooms.pmus', 'Admin\PmusController', array('except'    =>  array('show')));
  });
 
 
