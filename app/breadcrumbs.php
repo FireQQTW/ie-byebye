@@ -122,7 +122,7 @@ Breadcrumbs::register('admin.houses.rooms.edit', function($breadcrumbs, $house){
 // pmus
 Breadcrumbs::register('admin.rooms.pmus', function($breadcrumbs, $room){
     $breadcrumbs->parent('admin.houses.rooms', $room->house);
-    $breadcrumbs->push('控制器管理', route('admin.rooms.pums.index', $house->sn));
+    $breadcrumbs->push('控制器管理', route('admin.rooms.pmus.index', $room->house));
 });
 Breadcrumbs::register('admin.houses.rooms.create', function($breadcrumbs, $room){
     $breadcrumbs->parent('admin.houses.rooms', $room->house);
@@ -132,7 +132,6 @@ Breadcrumbs::register('admin.houses.rooms.edit', function($breadcrumbs, $room){
     $breadcrumbs->parent('admin.houses.rooms', $room->house);
     $breadcrumbs->push('控制器修改', route('admin.rooms.pmus.edit'));
 });
-
 
 
 /* user */
