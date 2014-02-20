@@ -62,7 +62,7 @@ Breadcrumbs::register('admin.roles.assign', function($breadcrumbs, $role){
 
 // permission
 Breadcrumbs::register('admin.permissions', function($breadcrumbs){
-    $breadcrumbs->parent('security');
+    $breadcrumbs->parent('admin.security');
     $breadcrumbs->push('權限設定', route('admin.permissions.index'));
 });
 
