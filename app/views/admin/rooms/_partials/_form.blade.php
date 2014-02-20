@@ -36,6 +36,6 @@
         {{ Form::hidden('house_id', $house->id) }}
         &nbsp; &nbsp; &nbsp;
 
-        {{ HTML::decode(link_to_route('admin.houses.rooms.index', '<i class="icon-remove bigger-110"></i>取消', null, array('class' => 'btn'))) }}
+        {{ HTML::decode(link_to_route('admin.houses.rooms.index', '<i class="icon-remove bigger-110"></i>取消', $house->sn, array('class' => 'btn'))) }}
     </div>
 </div>
