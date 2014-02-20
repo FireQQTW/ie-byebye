@@ -71,7 +71,7 @@ class RoomsController extends \BaseController {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  string  $landlord_sn
+	 * @param  string  $house_sn
 	 * @param  string  $sn
 	 * @return Response
 	 */
@@ -109,7 +109,7 @@ class RoomsController extends \BaseController {
 			}
 			else
 			{
-				return Redirect::route('admin.houses.rooms.edit', $sn, $room->house->sn)
+				return Redirect::route('admin.houses.rooms.edit', array($house_sn, $sn))
 					->withInput()
 					->withErrors($room->errors()); 
 			}

@@ -109,7 +109,7 @@ class HousesController extends \BaseController {
 			}
 			else
 			{
-				return Redirect::route('admin.landlords.houses.edit', $sn, $house->landlord->sn)
+				return Redirect::route('admin.landlords.houses.edit', array($landlord_sn, $sn))
 					->withInput()
 					->withErrors($house->errors()); 
 			}
