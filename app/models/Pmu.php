@@ -1,6 +1,6 @@
 <?php
 
-class Pmu extends Eloquent {
+class Pmu extends \LaravelBook\Ardent\Ardent {
     protected $table = 'pmus';
     protected $guarded = array('_token');
     /**
@@ -41,5 +41,15 @@ class Pmu extends Eloquent {
         if(empty($this->sn))
             $this->sn = md5(uniqid());
         return true;
+    }
+
+    public function getStatus()
+    {
+        return $this->isEnabled ? '啟用' : '停用';
+    }
+
+    public function getStatusCss()
+    {
+        return $this->isEnabled ? 'label-success' : 'label-danger';
     }
 }
