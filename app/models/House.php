@@ -1,4 +1,5 @@
 <?php
+use \App\Exceptions\NotOwnerException;
 
 class House extends \LaravelBook\Ardent\Ardent {
     protected $table = 'houses';
@@ -25,6 +26,13 @@ class House extends \LaravelBook\Ardent\Ardent {
     {
         if(empty($this->sn))
             $this->sn = md5(uniqid());
+        return true;
+    }
+
+    public function checkOwner($id)
+    {
+        if($this->landlord->id != $id)
+            throw new NotOwnerException();
         return true;
     }
 

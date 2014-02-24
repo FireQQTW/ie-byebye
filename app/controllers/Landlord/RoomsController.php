@@ -2,6 +2,7 @@
 namespace Landlord;
 use \View, \Redirect;
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
+use \App\Exceptions\NotOwnerException;
 class RoomsController extends \BaseController {
 
 	protected $Landlord;
@@ -24,12 +25,18 @@ class RoomsController extends \BaseController {
 		{
 			// find house through landlord
 			$house = \House::where('sn', '=', $house_sn)->firstOrFail();
+			$house->checkOwner($this->Landlord->id);
 			$rooms = $house->rooms;
+
         	return View::make('landlord.rooms.index', compact('h1Small', 'rooms', 'house'));
 		}
 		catch (ModelNotFoundException $e)
 		{
 			return Redirect::route('landlord.dashboard')->with('message', '無此筆資料，請檢查。');
+		}
+		catch (NotOwnerException $e)
+		{
+			return Redirect::route('landlord.dashboard')->with('message', '資料授權失敗。');
 		}
 	}
 	/**
@@ -69,11 +76,16 @@ class RoomsController extends \BaseController {
 	{
 		try
 		{
-
+			$room = \Room::where('sn', '=', $room_sn)->firstOrFail();
+			$room->checkOwner($this->Landlord->id);
 		}
 		catch (ModelNotFoundException $e)
 		{
 			return Redirect::route('landlord.rooms', array($house_sn))->with('message', '無此筆資料，請檢查。');
+		}
+		catch (NotOwnerException $e)
+		{
+			return Redirect::route('landlord.rooms', array($house_sn))->with('message', '資料授權失敗。');
 		}
 	}
 }

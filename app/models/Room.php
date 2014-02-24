@@ -1,4 +1,5 @@
 <?php
+use \App\Exceptions\NotOwnerException;
 
 class Room extends \LaravelBook\Ardent\Ardent {
     protected $table = 'rooms';
@@ -49,6 +50,13 @@ class Room extends \LaravelBook\Ardent\Ardent {
         if(empty(self::$rules['password'])) {
             unset($this->password);
         }
+        return true;
+    }
+
+    public function checkOwner($id)
+    {
+        if($this->house->landlord->id != $id)
+            throw new NotOwnerException();
         return true;
     }
 
