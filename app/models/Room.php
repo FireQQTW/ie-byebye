@@ -44,6 +44,14 @@ class Room extends \LaravelBook\Ardent\Ardent {
         return true;
     }
 
+    public function beforeSave()
+    {
+        if(empty(self::$rules['password'])) {
+            unset($this->password);
+        }
+        return true;
+    }
+
     public function getStatus()
     {
         return $this->isEnabled ? '啟用' : '停用';

@@ -40,6 +40,14 @@ class Landlord extends \LaravelBook\Ardent\Ardent {
         return true;
     }
 
+    public function beforeSave()
+    {
+        if(empty(self::$rules['password'])) {
+            unset($this->password);
+        }
+        return true;
+    }
+
     public function getFullAddress()
     {
         return sprintf('[%s]%s%s%s', $this->zipcode, $this->county, $this->district, $this->address);
