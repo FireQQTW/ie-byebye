@@ -48,7 +48,8 @@
     {{ Form::label('isEnabled', '狀態', array('class' =>  'col-sm-3 control-label no-padding-right')) }}
     <div class="col-sm-9">
         <label>
-            {{ Form::checkbox('isEnabled', '1', Input::old('isEnabled'), array('class'  =>  'ace ace-switch ace-switch-2')) }}
+            {{ Form::hidden('isEnabled', 0) }}
+            {{ Form::checkbox('isEnabled', 1, Input::old('isEnabled'), array('class'  =>  'ace ace-switch ace-switch-2')) }}
             <span class="lbl"></span>
         </label>
     </div>
