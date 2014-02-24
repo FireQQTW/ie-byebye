@@ -21,7 +21,8 @@ requirejs.config({
     jquerytouch: 'jqueryui-touch-punch/jquery.ui.touch-punch',
     typeahead: 'typeahead/dist/typeahead',
     chosen: '../admin/js/chosen',
-    adminApp: '../admin/js'
+    adminApp: '../admin/js',
+    noty: 'noty/js/noty/packaged/jquery.noty.packaged.min'
   },
   shim: {
     'jquery': {
@@ -43,6 +44,9 @@ requirejs.config({
       deps: ['chosen/chosen.jquery']
     },
     'chosen/chosen.jquery': {
+      deps: ['jquery']
+    },
+    'noty' :{
       deps: ['jquery']
     }
   }

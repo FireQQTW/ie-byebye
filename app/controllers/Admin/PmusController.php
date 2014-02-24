@@ -6,6 +6,7 @@ use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class PmusController extends \BaseController {
 	public function __construct()
 	{
+		parent::__construct();
 		View::share('menu_active', 'landlord');
 		View::share('h1', '控制器管理');
 	}
