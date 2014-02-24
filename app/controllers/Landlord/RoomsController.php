@@ -8,6 +8,7 @@ class RoomsController extends \BaseController {
 	protected $Landlord;
 	public function __construct()
 	{
+		parent::__construct();
 		View::share('menu_active', 'dashboard');
 		View::share('h1', '房間資訊');
 		$this->Landlord = \Session::get('auth.landlord');
