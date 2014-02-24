@@ -7,7 +7,7 @@ class DashboardController extends \BaseController {
 	protected $Landlord;
 	public function __construct()
 	{
-		View::share('menu_active', 'landlord');
+		View::share('menu_active', 'dashboard');
 		View::share('h1', '大樓資訊');
 		$this->Landlord = \Session::get('auth.landlord');
 	}

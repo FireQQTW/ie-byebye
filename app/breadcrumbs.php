@@ -152,3 +152,8 @@ Breadcrumbs::register('landlord.dashboard', function($breadcrumbs) {
     $breadcrumbs->parent('landlord.home');
     $breadcrumbs->push('Dashboard', route('landlord.dashboard'));
 });
+Breadcrumbs::register('landlord.rooms', function($breadcrumbs) {
+    $breadcrumbs->parent('landlord.dashboard');
+    $breadcrumbs->push('房間管理', route('landlord.rooms'));
+});
+
