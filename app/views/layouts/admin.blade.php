@@ -153,6 +153,7 @@
                             </small>
                         </h1>
                     </div>
+                    @include('_partials/_noty_contain')
                     <!-- /.page-header -->
                     <div class="row">
                         <div class="col-xs-12">
