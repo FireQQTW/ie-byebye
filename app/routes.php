@@ -34,9 +34,9 @@ Route::any('landlord/login', array('as' => 'landlord.login', 'uses' => 'LoginCon
 Route::group(array('prefix' => 'landlord', 'before' =>  'auth.landlord'), function(){
     Route::any('dashboard', array('as' =>  'landlord.dashboard', 'uses' => 'Landlord\DashboardController@index'));
     Route::get('house/{house_sn}', array('as'  =>  'landlord.rooms', 'uses'    =>  'Landlord\RoomsController@index'));
-    Route::post('house/{house_sn}/room/check/{room_sn}', array('as' =>  'landlord.rooms.check', 'uses'    =>  'Landlord\RoomsController@check'));
-    Route::get('house/{house_sn}/room/password/{room_sn}', array('as' =>  'landlord.rooms.password', 'uses'   =>  'Landlord\RoomsController@password'));
-    Route::get('house/{house_sn}/room/password/update', array('as' =>  'landlord.rooms.password.update', 'uses'   =>  'Landlord\RoomsController@update'));
+    Route::post('house/{house_sn}/room/{room_sn}/check', array('as' =>  'landlord.rooms.check', 'uses'    =>  'Landlord\RoomsController@check'));
+    Route::get('house/{house_sn}/room/{room_sn}/password', array('as' =>  'landlord.rooms.password', 'uses'   =>  'Landlord\RoomsController@password'));
+    Route::post('house/{house_sn}/room/{room_sn}/password/update', array('as' =>  'landlord.rooms.password.update', 'uses'   =>  'Landlord\RoomsController@update'));
 
 });
 
