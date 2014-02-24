@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('breadcrumbs', Breadcrumbs::render('index.dashboard'))
+@section('breadcrumbs', Breadcrumbs::render('user.dashboard'))
 @section('main')
     <div class="row">
         <div class="col-xs-12">

@@ -38,7 +38,7 @@
 											</h4>
 
 											<div class="space-6"></div>
-											{{ Form::open(array('route'	=>	'index.login', 'method'	=>	'post')) }}
+											{{ Form::open(array('route'	=>	'user.login', 'method'	=>	'post')) }}
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">

@@ -93,7 +93,7 @@
                 <input type="hidden" id="menu_active" value="{{$menu_active}}" />
                 <ul id="mainmenu" class="nav nav-list">
                     <li>
-                        <a href="{{URL::route('index.dashboard')}}"> 
+                        <a href="{{URL::route('user.dashboard')}}"> 
                             <i class="icon-dashboard"></i>
                             <span class="menu-text">Dashboard</span>
                         </a>

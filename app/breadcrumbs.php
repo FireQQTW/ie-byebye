@@ -135,20 +135,19 @@ Breadcrumbs::register('admin.rooms.pmus.edit', function($breadcrumbs, $room){
 
 
 /* user */
-Breadcrumbs::register('index.home', function($breadcrumbs) {
-    $breadcrumbs->push('Home', route('index.dashboard'));
+Breadcrumbs::register('user.home', function($breadcrumbs) {
+    $breadcrumbs->push('Home', route('user.dashboard'));
 });
 
-Breadcrumbs::register('index.dashboard', function($breadcrumbs) {
-    $breadcrumbs->parent('index.home');
-    $breadcrumbs->push('Dashboard', route('index.dashboard'));
+Breadcrumbs::register('user.dashboard', function($breadcrumbs) {
+    $breadcrumbs->parent('user.home');
+    $breadcrumbs->push('Dashboard', route('user.dashboard'));
 });
 
 /* landlord */
 Breadcrumbs::register('landlord.home', function($breadcrumbs) {
     $breadcrumbs->push('Home', route('landlord.dashboard'));
 });
-
 Breadcrumbs::register('landlord.dashboard', function($breadcrumbs) {
     $breadcrumbs->parent('landlord.home');
     $breadcrumbs->push('Dashboard', route('landlord.dashboard'));
