@@ -50,7 +50,7 @@ class LoginController extends BaseController {
 			
 			$validation = Validator::make(Input::all(), \Landlord::$loginRules, \Landlord::$loginMessages);
 			if($validation->fails())
-				return Redirect::route('index.login')->withErrors($validation)->withInput();
+				return Redirect::route('landlord.login')->withErrors($validation)->withInput();
 
 			// find user. login with rooms.
 			$username = Input::get('username');
