@@ -1,7 +1,7 @@
 <?php
 namespace Landlord;
 use \View, \Redirect;
-
+use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class RoomsController extends \BaseController {
 
 	protected $Landlord;
