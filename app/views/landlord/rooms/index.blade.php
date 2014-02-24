@@ -43,8 +43,8 @@
                             <td>
                                 <!-- Desktop -->
                                 <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                    {{Form::open(array('method' => 'POST', 'route' => array('landlord.rooms.check', $room->sn), 'class' => 'btn-group'))}}
-                                        {{HTML::decode(link_to_route('admin.rooms.pmus.index', '<i class="icon-th bigger-120"></i>密碼設定', array($room->sn), array('class' => 'btn btn-xs btn-info')))}}
+                                    {{Form::open(array('method' => 'POST', 'route' => array('landlord.rooms.check', $house->sn, $room->sn), 'class' => 'btn-group'))}}
+                                        {{HTML::decode(link_to_route('admin.rooms.pmus.index', '<i class="icon-th bigger-120"></i>密碼設定', array($house->sn, $room->sn), array('class' => 'btn btn-xs btn-info')))}}
                                         @if(!$room->isEnabled)
                                             {{HTML::ButtonWithIcon('<i class="icon-check bigger-120"></i>啟用', array('class' => 'btn btn-xs btn-success', 'type'  =>  'submit'))}}
                                             {{Form::hidden('isEnabled', 1)}}
@@ -56,7 +56,7 @@
                                 </div>
                                 <!-- RWD -->
                                 <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                    {{Form::open(array('method' => 'POST', 'route' => array('landlord.rooms.check', $room->sn)))}}
+                                    {{Form::open(array('method' => 'POST', 'route' => array('landlord.rooms.check', $house->sn, $room->sn)))}}
                                         <div class="inline position-relative">
                                             <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
                                                 <i class="icon-cog icon-only bigger-110"></i>
@@ -65,7 +65,7 @@
                                             <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
                                                 <li>
 
-                                                    {{HTML::decode(link_to_route('admin.rooms.pmus.index', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($room->sn), array('class' => 'tooltip-info', 'data-rel'    =>  'tooltip', 'title'  =>  '密碼設定')))}}
+                                                    {{HTML::decode(link_to_route('admin.rooms.pmus.index', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($house->sn, $room->sn), array('class' => 'tooltip-info', 'data-rel'    =>  'tooltip', 'title'  =>  '密碼設定')))}}
                                                 </li>
                                                 <li>
                                                     @if(!$room->isEnabled)
