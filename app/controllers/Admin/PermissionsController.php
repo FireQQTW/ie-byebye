@@ -6,6 +6,7 @@ class PermissionsController extends \BaseController {
 	protected $permission;
 	public function __construct(\Permissions $permission)
 	{
+		parent::__construct();
 		View::share('menu_active', 'permission');
 		View::share('h1', '權限設定');
 		$this->permission = $permission;

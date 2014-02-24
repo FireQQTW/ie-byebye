@@ -8,6 +8,7 @@ class PermissionAssignController extends \BaseController {
 	protected $permission;
 	public function __construct(\Role $role, \Permissions $permission)
 	{
+		parent::__construct();
 		View::share('menu_active', 'roles');
 		View::share('h1', '群組設定');
 		$this->role = $role;

@@ -8,6 +8,7 @@ class UsersController extends \BaseController {
 
 	public function __construct(User $user)
 	{
+		parent::__construct();
 		View::share('menu_active', 'users');
 		View::share('h1', '管理者設定');
 		$this->user = $user;

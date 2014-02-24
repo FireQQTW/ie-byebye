@@ -6,6 +6,7 @@ class DashboardController extends \BaseController {
 
 	public function __construct()
 	{
+		parent::__construct();
 		View::share('menu_active', 'index');
 		View::share('h1', 'Dashboard');
 	}
