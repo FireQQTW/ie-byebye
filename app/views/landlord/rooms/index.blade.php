@@ -51,10 +51,10 @@
                                         {{HTML::decode(link_to_route('admin.rooms.pmus.index', '<i class="icon-th bigger-120"></i>密碼設定', array($room->sn), array('class' => 'btn btn-xs btn-info')))}}
                                         @if(!$room->isEnabled)
                                             {{HTML::ButtonWithIcon('<i class="icon-check bigger-120"></i>啟用', array('class' => 'btn btn-xs btn-success', 'type'  =>  'submit'))}}
-                                            {{Form::hidden('isEnabled', true)}}
+                                            {{Form::hidden('isEnabled', 1)}}
                                         @else
                                             {{HTML::ButtonWithIcon('<i class="icon-ban-circle bigger-120"></i>停用', array('class' => 'btn btn-xs btn-danger', 'type'  =>  'submit'))}}
-                                            {{Form::hidden('isEnabled', false)}}
+                                            {{Form::hidden('isEnabled', 0)}}
                                         @endif
                                     {{Form::close()}}
                                 </div>
@@ -74,10 +74,10 @@
                                                 <li>
                                                     @if(!$room->isEnabled)
                                                         {{HTML::ButtonWithIcon('<i class="icon-check bigger-120"></i>啟用', array('class' => 'btn btn-xs btn-success', 'type'  =>  'submit'))}}
-                                                        {{Form::hidden('isEnabled', true)}}
+                                                        {{Form::hidden('isEnabled', 1)}}
                                                     @else
                                                         {{HTML::ButtonWithIcon('<i class="icon-ban-circle bigger-120"></i>停用', array('class' => 'btn btn-xs btn-danger', 'type'  =>  'submit'))}}
-                                                        {{Form::hidden('isEnabled', false)}}
+                                                        {{Form::hidden('isEnabled', 0)}}
                                                     @endif
                                                 </li>
                                             </ul>
