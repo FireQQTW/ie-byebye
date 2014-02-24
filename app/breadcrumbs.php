@@ -152,8 +152,12 @@ Breadcrumbs::register('landlord.dashboard', function($breadcrumbs) {
     $breadcrumbs->parent('landlord.home');
     $breadcrumbs->push('Dashboard', route('landlord.dashboard'));
 });
-Breadcrumbs::register('landlord.rooms', function($breadcrumbs) {
+Breadcrumbs::register('landlord.rooms', function($breadcrumbs, $house) {
     $breadcrumbs->parent('landlord.dashboard');
-    $breadcrumbs->push('房間管理', route('landlord.rooms'));
+    $breadcrumbs->push('房間管理', route('landlord.rooms', $house->sn));
+});
+Breadcrumbs::register('landlord.rooms.password', function($breadcrumbs, $room) {
+    $breadcrumbs->parent('landlord.rooms', $room->house);
+    $breadcrumbs->push('變更密碼', route('landlord.rooms.password', $room->house->sn, $room->sn));
 });
 
