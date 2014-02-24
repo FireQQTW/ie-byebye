@@ -18,10 +18,6 @@
                             <th>剩餘金額</th>
                             <th>狀態</th>
                             <th>
-                                <a href="{{URL::route('admin.houses.rooms.create', $house->sn)}}" class="btn btn-info btn-xs pull-right">
-                                    <i class="icon-plus align-top bigger-110 icon-on-right"></i>
-                                    新增
-                                </a>
                             </th>
                         </tr>
                     </thead>
