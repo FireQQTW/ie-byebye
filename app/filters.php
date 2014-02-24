@@ -33,10 +33,10 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth.index', function()
+Route::filter('auth.user', function()
 {
-    $room = Session::get('auth.index', null);
-    if($room == null) return Redirect::route('index.login');
+    $room = Session::get('auth.user', null);
+    if($room == null) return Redirect::route('user.login');
 });
 
 
