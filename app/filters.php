@@ -32,14 +32,21 @@ App::after(function($request, $response)
 | integrates HTTP Basic authentication for quick, simple checking.
 |
 */
-
+// user auth filter
 Route::filter('auth.index', function()
 {
     $room = Session::get('auth.index', null);
     if($room == null) return Redirect::route('index.login');
 });
 
+// user auth filter
+Route::filter('auth.landlord', function()
+{
+    $landlord = Session::get('auth.landlord', null);
+    if($landlord == null) return Redirect::route('landlord.login');
+});
 
+// admin auth filter
 Route::filter('auth.admin', function(){
     if(Auth::guest()) return Redirect::route('admin.login');
     // Permission Verify

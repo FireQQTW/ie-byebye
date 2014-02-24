@@ -143,3 +143,13 @@ Breadcrumbs::register('index.dashboard', function($breadcrumbs) {
     $breadcrumbs->parent('index.home');
     $breadcrumbs->push('Dashboard', route('index.dashboard'));
 });
+
+/* landlord */
+Breadcrumbs::register('landlord.home', function($breadcrumbs) {
+    $breadcrumbs->push('Home', route('landlord.dashboard'));
+});
+
+Breadcrumbs::register('landlord.dashboard', function($breadcrumbs) {
+    $breadcrumbs->parent('landlord.home');
+    $breadcrumbs->push('Dashboard', route('landlord.dashboard'));
+});

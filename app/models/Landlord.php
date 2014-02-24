@@ -21,7 +21,13 @@ class Landlord extends \LaravelBook\Ardent\Ardent {
                                 );
     public static $customMessages =array('required'    =>  '請輸入 :attribute',
                                           'confirmed'   =>  '密碼比對失敗');
-
+    // login rule & message
+    public static $loginRules = array('username'    =>  'required',
+                                       'password'   =>  'required');
+    
+    public static $loginMessages = array('username.required' =>  '請輸入帳號',
+                                            'password.required' =>  '請輸入密碼');
+    
     // relationship
     public static $relationsData = array(
         'houses'    => array(self::HAS_MANY, 'House')

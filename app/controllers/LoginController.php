@@ -2,7 +2,7 @@
 class LoginController extends BaseController {
 
 	/**
-	 * Display a listing of the resource.
+	 * Display user login page.
 	 *
 	 * @return Response
 	 */
@@ -38,7 +38,47 @@ class LoginController extends BaseController {
         return View::make('login.index');
 	}
 
-	
+	/**
+	 * Display landlord login page.
+	 *
+	 * @return Response
+	 */
+	public function landlord()
+	{
+		if(Input::server("REQUEST_METHOD") == "POST")
+		{
+			
+			$validation = Validator::make(Input::all(), \Landlord::$loginRules, \Landlord::$loginMessages);
+			if($validation->fails())
+				return Redirect::route('index.login')->withErrors($validation)->withInput();
+
+			// find user. login with rooms.
+			$username = Input::get('username');
+			$password = Input::get('password');
+			try
+			{
+				$landlord = \Landlord::where('username', $username)->firstOrFail();
+				if($landlord->isEnabled == false)
+					return Redirect::route('landlord.login')->with('message', '帳號已被停用');
+
+				if(!Hash::check($password, $landlord->password))
+					return Redirect::route('landlord.login')->with('message', '帳號或密碼錯誤(120)');
+				// login success
+				Session::put('auth.landlord', $landlord);
+				return Redirect::route('landlord.dashboard');
+			}
+			catch (ModelNotFoundException $e)
+			{
+				return Redirect::route('landlord.login')->with('message', '帳號或密碼錯誤(100)');
+			}
+		}
+        return View::make('login.landlord');
+	}
+
+	/**
+	 * Display admin login page.
+	 * @return Response
+	 */
 	public function admin()
 	{
 
