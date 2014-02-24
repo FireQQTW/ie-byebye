@@ -8,7 +8,7 @@ define(function() {
     return {
         initialize: function() {
             require(['jquery', 'ace/ace.min'], function() {
-                
+                require(['adminApp/run-noty']);
                 $(document).ready(function(){
                     // 使用超連結模擬送出表單
                     $(document).on('click', '.simulate-submit', function(event) {
@@ -21,9 +21,6 @@ define(function() {
                     var $active_menu = $("#mainmenu.nav a[href*='" + active_val +"']");
                     $active_menu.parent('li').addClass('active').parents('ul.submenu').parent('li').addClass('active open');
                 });
-
-
-
 
                 try {
                     ace.settings.check('navbar', 'fixed')
@@ -42,9 +39,7 @@ define(function() {
                 try {
                     ace.settings.check('breadcrumbs', 'fixed')
                 } catch (e) {}
-
             });
-
         }
     }
 
