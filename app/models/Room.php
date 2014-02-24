@@ -18,6 +18,7 @@ class Room extends \LaravelBook\Ardent\Ardent {
 
     // rules & messages
     public static $rules = array('name'  =>  'required',
+                                'password'  =>  'required|confirmed',
                                 'billed'   =>  'required|integer',
                                 'isEnabled'  =>  'required'
                                 );
