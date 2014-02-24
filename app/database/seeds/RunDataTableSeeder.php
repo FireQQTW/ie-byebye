@@ -169,6 +169,48 @@ class RunDataTableSeeder extends Seeder {
             'mu_dt' =>  date("Y-m-d H:i:s")
         ));
 
+        // test data 2
+        $landlord_id = DB::table('landlords')->insertGetId(array(
+            'sn'    =>  md5(uniqid()),
+            'username'  =>  'landlord2',
+            'password'  =>  Hash::make('landlord2'),
+            'name'  =>  '房東2',
+            'zipcode'   =>  '403',
+            'county'    =>  '台中市',
+            'district'  =>  '西區',
+            'address'   =>  '美村路二段1號',
+            'isEnabled' =>  true
+        ));
+
+        $house_id = DB::table('houses')->insertGetId(array(
+            'sn'    =>  md5(uniqid()),
+            'landlord_id'   =>  $landlord_id,
+            'zipcode'   =>  '403',
+            'county'    =>  '台中市',
+            'district'  =>  '西區',
+            'address'   =>  '美村路二段2號'
+        ));
+
+        $room_id = DB::table('rooms')->insertGetId(array(
+            'sn'    =>  md5(uniqid()),
+            'house_id'  =>  $house_id,
+            'username'  =>  'room4-1',
+            'password'  =>  Hash::make('room4-1'),
+            'name'  =>  '房客1-1',
+            'billed'    =>  3000,
+            'isEnabled' =>   true
+        ));
+
+        DB::table('pmus')->insertGetId(array(
+            'sn'    =>  md5(uniqid()),
+            'room_id' =>    $room_id,
+            'name'  =>  'A0007',
+            'ip'    =>  '192.168.0.7',
+            'use_w' =>  3000,
+            'last_w'    =>  1500,
+            'mu_dt' =>  date("Y-m-d H:i:s")
+        ));
+
 	}
 
 }
