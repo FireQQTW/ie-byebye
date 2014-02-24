@@ -53,6 +53,8 @@ class RoomsController extends \BaseController {
 		{
 			// find house through landlord
 			$room = \Room::where('sn', '=', $room_sn)->firstOrFail();
+			// cancel update password
+			$room::$rules['password'] = '';
 			if($room->save()) {
 				$message = $room->isEnabled ? '房間已開啟' : '房間已停用';
 				return Redirect::route('landlord.rooms', array($house_sn))->with('message', $message);
