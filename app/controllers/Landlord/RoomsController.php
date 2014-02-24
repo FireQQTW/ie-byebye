@@ -72,12 +72,49 @@ class RoomsController extends \BaseController {
 	 * @param  string  $room_sn
 	 * @return Response
 	 */
-	public function password($house_sn, $room_sn)
+	public function edit($house_sn, $room_sn)
 	{
+		$h1Small = '變更密碼';
 		try
 		{
 			$room = \Room::where('sn', '=', $room_sn)->firstOrFail();
 			$room->checkOwner($this->Landlord->id);
+			return View::make('landlord.rooms.edit', compact('h1Small', 'room'));
+		}
+		catch (ModelNotFoundException $e)
+		{
+			return Redirect::route('landlord.rooms', array($house_sn))->with('message', '無此筆資料，請檢查。');
+		}
+		catch (NotOwnerException $e)
+		{
+			return Redirect::route('landlord.rooms', array($house_sn))->with('message', '資料授權失敗。');
+		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @param  string  $house_sn
+	 * @param  string  $room_sn
+	 * @return Response
+	 */
+	public function update($house_sn, $room_sn)
+	{
+		$h1Small = '變更密碼';
+		try
+		{
+			$room = \Room::where('sn', '=', $room_sn)->firstOrFail();
+			$room->checkOwner($this->Landlord->id);
+			if($room->save())
+			{
+				return Redirect::route('landlord.rooms', array($house_sn))->with('message', "修改完成");
+			}
+			else
+			{
+				return Redirect::route('landlord.rooms.edit', array($house_sn, $room_sn))
+					->withInput()
+					->withErrors($room->errors()); 
+			}
 		}
 		catch (ModelNotFoundException $e)
 		{
