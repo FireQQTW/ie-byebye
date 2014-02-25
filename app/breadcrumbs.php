@@ -160,4 +160,8 @@ Breadcrumbs::register('landlord.rooms.edit', function($breadcrumbs, $room) {
     $breadcrumbs->parent('landlord.rooms', $room->house);
     $breadcrumbs->push('變更密碼', route('landlord.rooms.edit', $room->house->sn, $room->sn));
 });
+Breadcrumbs::register('landlord.rooms.edit.bill', function($breadcrumbs, $room) {
+    $breadcrumbs->parent('landlord.rooms', $room->house);
+    $breadcrumbs->push('計價設定', route('landlord.rooms.edit.bill', $room->house->sn, $room->sn));
+});
 
