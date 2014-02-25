@@ -4,7 +4,7 @@
 @section('main')
     {{ Form::model($room, array('method'   =>  'POST', 'route' => array('landlord.rooms.update', $room->house->sn, $room->sn), 'class' => 'form-horizontal', 'role' => 'form')) }}
          <div class="form-group">
-            {{ Form::label('username', '密碼', array('class' => 'col-sm-3 control-label no-padding-right')) }}
+            {{ Form::label('username', '帳號', array('class' => 'col-sm-3 control-label no-padding-right')) }}
             <div class="col-sm-9">
                 {{ Form::text('username', null ,array('class'   =>  'col-xs-10 col-sm-5', 'placeholder' =>  '請輸入帳號')) }}
             </div>
