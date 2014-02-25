@@ -55,7 +55,7 @@ class Room extends \LaravelBook\Ardent\Ardent {
         if(empty(self::$rules['password'])) {
             unset($this->password);
         }
-        $billJson = json_encode("value" =>  $this->billType,   "radio" =>  $this->billValue);
+        $billJson = json_encode(array("value" =>  $this->billType,   "radio" =>  $this->billValue));
         $this->BilledTypeJsonData = json_encode($billJson);
         return true;
     }
