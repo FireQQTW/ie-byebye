@@ -37,7 +37,8 @@ Route::group(array('prefix' => 'landlord', 'before' =>  'auth.landlord'), functi
     Route::post('house/{house_sn}/room/{room_sn}/check', array('as' =>  'landlord.rooms.check', 'uses'    =>  'Landlord\RoomsController@check'));
     Route::get('house/{house_sn}/room/{room_sn}/edit', array('as' =>  'landlord.rooms.edit', 'uses'   =>  'Landlord\RoomsController@edit'));
     Route::post('house/{house_sn}/room/{room_sn}/update', array('as' =>  'landlord.rooms.update', 'uses'   =>  'Landlord\RoomsController@update'));
-
+    Route::get('house/{house_sn}/room/{room_sn}/edit/bill', array('as' =>  'landlord.rooms.edit.bill', 'uses'   =>  'Landlord\RoomsController@bill'));
+    Route::post('house/{house_sn}/room/{room_sn}/update/bill', array('as' =>  'landlord.rooms.update.bill', 'uses'   =>  'Landlord\RoomsController@bill_update'));
 });
 
 // admin login
