@@ -71,4 +71,33 @@ class Room extends \LaravelBook\Ardent\Ardent {
         return $this->isEnabled ? 'label-success' : 'label-danger';
     }
 
+    public function getBilledType()
+    {
+        $json = json_decode($this->BilledTypeJsonData);
+        return strtolower($json["radio"]);
+    }
+
+    public function getBilledTypeToString()
+    {
+        $type = $this->getBilledType();
+        switch($type){
+            case 'walt':
+                $value = '每度';
+                break;
+            case 'time':
+                $value = '每小時';
+                break;
+            default:
+                $value = '尚未設定';
+                break;
+        }
+        return $value;
+    }
+
+    public function getBilledUnitPrice()
+    {
+        $json = json_decode($this->BilledTypeJsonData);
+        return $json["value"];
+    }
+
 }

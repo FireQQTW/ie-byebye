@@ -50,4 +50,38 @@ class Pmu extends \LaravelBook\Ardent\Ardent {
     {
         return $this->isEnabled ? 'label-success' : 'label-danger';
     }
+
+    public function getUsedValue()
+    {
+        $type = $this->room->getBilledType();
+        switch($type){
+            case 'walt':
+                $value = $this->use_w;
+                break;
+            case 'time':
+                $value = $this->use_minute;
+                break;
+            default:
+                $value = '尚未設定';
+                break;
+        }
+        return $value;
+    }
+
+    public function getLastValue()
+    {
+        $type = $this->room->getBilledType();
+        switch($type){
+            case 'walt':
+                $value = $this->last_w;
+                break;
+            case 'time':
+                $value = $this->last_minute;
+                break;
+            default:
+                $value = '尚未設定';
+                break;
+        }
+        return $value;
+    }
 }
