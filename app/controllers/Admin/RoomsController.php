@@ -118,6 +118,8 @@ class RoomsController extends \BaseController {
 		try
 		{
 			$room = \Room::where('sn', '=', $sn)->firstOrFail();
+			// if password empty, would not confirm or update password.
+			$room::$rules['password'] = (Input::get('password')) ? $room::$rules['password'] : '';
 			if($room->save())
 			{
 				return Redirect::route('admin.houses.rooms.show', array($house_sn, $sn))->with('message', "修改完成");
