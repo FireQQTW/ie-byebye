@@ -16,6 +16,10 @@ class Room extends \LaravelBook\Ardent\Ardent {
     public $autoHashPasswordAttributes = true;
     public $autoPurgeRedundantAttributes = true;
 
+    // for json data property.
+    public $billType;
+    public $billValue;
+
     // rules & messages
     public static $rules = array('name'  =>  'required',
                                 'password'  =>  'required|confirmed',
@@ -51,6 +55,8 @@ class Room extends \LaravelBook\Ardent\Ardent {
         if(empty(self::$rules['password'])) {
             unset($this->password);
         }
+        $billJson = json_encode("value" =>  $this->billType,   "radio" =>  $this->billValue);
+        $this->BilledTypeJsonData = json_encode($billJson);
         return true;
     }
 
