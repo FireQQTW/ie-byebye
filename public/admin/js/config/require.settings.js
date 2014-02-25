@@ -22,7 +22,8 @@ requirejs.config({
     typeahead: 'typeahead/dist/typeahead',
     chosen: '../admin/js/chosen',
     adminApp: '../admin/js',
-    noty: 'noty/js/noty/packaged/jquery.noty.packaged.min'
+    noty: 'noty/js/noty/packaged/jquery.noty.packaged.min',
+    zipcode: 'jquery-twzipcode/jquery.twzipcode.min'
   },
   shim: {
     'jquery': {
@@ -47,6 +48,9 @@ requirejs.config({
       deps: ['jquery']
     },
     'noty' :{
+      deps: ['jquery']
+    },
+    'zipcode':{
       deps: ['jquery']
     }
   }
