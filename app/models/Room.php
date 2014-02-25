@@ -3,7 +3,7 @@ use \App\Exceptions\NotOwnerException;
 
 class Room extends \LaravelBook\Ardent\Ardent {
     protected $table = 'rooms';
-	protected $guarded = array('_token');
+	protected $guarded = array('_token', 'billType', 'billValue');
     /**
      * The attributes excluded from the model's JSON form.
      *
@@ -16,10 +16,6 @@ class Room extends \LaravelBook\Ardent\Ardent {
     public $autoHashPasswordAttributes = true;
     public $autoPurgeRedundantAttributes = true;
 
-    // for json data property.
-    public $billType;
-    public $billValue;
-
     // rules & messages
     public static $rules = array('name'  =>  'required',
                                 'password'  =>  'required|confirmed',
@@ -29,7 +25,7 @@ class Room extends \LaravelBook\Ardent\Ardent {
     
     public static $customMessages =array('required'    =>  '請輸入 :attribute',
                                           'confirmed'   =>  '密碼比對失敗',
-                                          'integer' =>  '請輸入數字');
+                                          'integer' =>  '請輸入整數');
     // login rule & message
     public static $loginRules = array('username'    =>  'required',
                                        'password'   =>  'required');
@@ -55,8 +51,6 @@ class Room extends \LaravelBook\Ardent\Ardent {
         if(empty(self::$rules['password'])) {
             unset($this->password);
         }
-        $billJson = json_encode(array("value" =>  $this->billType,   "radio" =>  $this->billValue));
-        $this->BilledTypeJsonData = json_encode($billJson);
         return true;
     }
 
@@ -80,7 +74,7 @@ class Room extends \LaravelBook\Ardent\Ardent {
     public function getBilledType()
     {
         $json = json_decode($this->BilledTypeJsonData);
-        return strtolower($json["radio"]);
+        return empty($json->radio) ? "" : strtolower($json->radio);
     }
 
     public function getBilledTypeToString()
@@ -103,7 +97,7 @@ class Room extends \LaravelBook\Ardent\Ardent {
     public function getBilledUnitPrice()
     {
         $json = json_decode($this->BilledTypeJsonData);
-        return $json["value"];
+        return empty($json->value) ? 0 : $json->value;
     }
 
 }
