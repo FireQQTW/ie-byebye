@@ -48,7 +48,8 @@
                                         <!-- Desktop -->
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
                                             {{Form::open(array('method' => 'POST', 'route' => array('landlord.rooms.check', $house->sn, $room->sn), 'class' => 'btn-group'))}}
-                                                {{HTML::decode(link_to_route('landlord.rooms.edit', '<i class="icon-th bigger-120"></i>帳號密碼', array($house->sn, $room->sn), array('class' => 'btn btn-xs btn-info')))}}
+                                                {{HTML::decode(link_to_route('landlord.rooms.edit', '<i class="icon-user bigger-120"></i>帳號密碼', array($house->sn, $room->sn), array('class' => 'btn btn-xs btn-info')))}}
+                                                {{HTML::decode(link_to_route('landlord.rooms.edit', '<i class="icon-legal bigger-120"></i>計價設定', array($house->sn, $room->sn), array('class' => 'btn btn-xs btn-inverse')))}}
                                                 @if(!$room->isEnabled)
                                                     {{HTML::ButtonWithIcon('<i class="icon-check bigger-120"></i>啟用', array('class' => 'btn btn-xs btn-success', 'type'  =>  'submit'))}}
                                                     {{Form::hidden('isEnabled', 1)}}
@@ -69,7 +70,7 @@
                                                     <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
                                                         <li>
 
-                                                            {{HTML::decode(link_to_route('landlord.rooms.edit', '<span class="green"><i class="icon-edit bigger-120"></i></span>', array($house->sn, $room->sn), array('class' => 'tooltip-info', 'data-rel'    =>  'tooltip', 'title'  =>  '帳號密碼')))}}
+                                                            {{HTML::decode(link_to_route('landlord.rooms.edit', '<span class="infobox-blue"><i class="icon-user bigger-120"></i>帳號密碼</span>', array($house->sn, $room->sn), array('class' => 'tooltip-info', 'data-rel'    =>  'tooltip', 'title'  =>  '帳號密碼')))}}
                                                         </li>
                                                         <li>
                                                             @if(!$room->isEnabled)
