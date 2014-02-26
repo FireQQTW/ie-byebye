@@ -64,6 +64,6 @@
 
         &nbsp; &nbsp; &nbsp;
 
-        {{ HTML::decode(link_to_route('admin.landlords.index', '<i class="icon-remove bigger-110"></i>取消', null, array('class' => 'btn'))) }}
+        {{ HTML::decode(link_to_route('admin.landlords.index', '<i class="icon-remove bigger-110"></i>取消', null, array('class' => 'btn jquery-confirm'))) }}
     </div>
 </div>

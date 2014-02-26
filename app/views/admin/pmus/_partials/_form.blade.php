@@ -37,6 +37,6 @@
         {{ Form::hidden('room_id', $room->id) }}
         &nbsp; &nbsp; &nbsp;
 
-        {{ HTML::decode(link_to_route('admin.rooms.pmus.index', '<i class="icon-remove bigger-110"></i>取消', $room->sn, array('class' => 'btn'))) }}
+        {{ HTML::decode(link_to_route('admin.rooms.pmus.index', '<i class="icon-remove bigger-110"></i>取消', $room->sn, array('class' => 'btn jquery-confirm'))) }}
     </div>
 </div>
