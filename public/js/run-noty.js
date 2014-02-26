@@ -1,4 +1,4 @@
-require(['noty'], function(){
+define(['noty'], function(){
     if($('.noty-message').length > 0){
         var messages = $('.noty-message').find('span');
         var style = $('.noty-message').data('status');
