@@ -22,10 +22,20 @@
         </div>
 
         <div class="space-4"></div>
+
         <div class="form-group">
             {{ Form::label('billValue', '費用', array('class' => 'col-sm-3 control-label no-padding-right')) }}
             <div class="col-sm-9">
                 {{ Form::text('billValue', $room->getBilledUnitPrice() ,array('class'   =>  'col-xs-10 col-sm-5', 'placeholder' =>  '請輸入費用')) }}
+            </div>
+        </div>
+
+        <div class="space-4"></div>
+        
+        <div class="form-group">
+            {{ Form::label('billed', '餘額', array('class' => 'col-sm-3 control-label no-padding-right')) }}
+            <div class="col-sm-9">
+                {{ Form::text('billed', $room->billed ,array('class'   =>  'col-xs-10 col-sm-5', 'placeholder' =>  '請輸入餘額')) }}
             </div>
         </div>
 
