@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('breadcrumbs', Breadcrumbs::render('admin.landlords.create'))
 @section('asset-js')
-	{{HTML::script('/admin/js/landlord/form.js')}}
+	{{HTML::script('/js/landlord/form.js')}}
 @stop
 @section('main')
 	{{ Form::model(new \Landlord, array('route' => array('admin.landlords.store'), 'class' => 'form-horizontal', 'role' => 'form')) }}

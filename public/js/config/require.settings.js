@@ -7,7 +7,7 @@ requirejs.config({
   baseUrl: '/components',
   paths: {
     bootstrap: 'bootstrap/dist/js/bootstrap',
-    ace: '../admin/js/ace',
+    ace: '../js/ace',
     html5shiv: 'html5shiv/dist/html5shiv',
     respond: 'respond/respond.src',
     excanvas: 'excanvas/excanvas',
@@ -20,7 +20,7 @@ requirejs.config({
     jqueryui: 'jquery-ui/ui/minified',
     jquerytouch: 'jqueryui-touch-punch/jquery.ui.touch-punch',
     typeahead: 'typeahead/dist/typeahead',
-    chosen: '../admin/js/chosen',
+    chosen: '../js/chosen',
     adminApp: '../admin/js',
     noty: 'noty/js/noty/packaged/jquery.noty.packaged.min',
     zipcode: 'jquery-twzipcode/jquery.twzipcode.min'

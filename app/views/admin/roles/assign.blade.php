@@ -2,11 +2,11 @@
 @section('breadcrumbs', Breadcrumbs::render('admin.roles.assign', $role))
 
 @section('asset-css')
-	{{HTML::style('/admin/css/chosen.css')}}
+	{{HTML::style('/css/chosen.css')}}
 @stop
 
 @section('asset-js')
-	{{HTML::script('/admin/js/chosen/chosen.select.js')}}
+	{{HTML::script('/js/chosen/chosen.select.js')}}
 @stop
 
 @section('main')

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('breadcrumbs', Breadcrumbs::render('admin.roles'))
 @section('asset-js')
-	{{Html::script('/admin/js/bootstrap/tooltip.js')}}
+	{{Html::script('/js/bootstrap/tooltip.js')}}
 @stop
 @section('main')
 	<div class="row">

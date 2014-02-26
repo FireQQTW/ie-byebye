@@ -7,7 +7,7 @@
 
     <meta name="description" content="overview &amp; stats" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @include('admin._partials.adminCss')
+    @include('_partials.css')
     @yield('asset-css')
 </head>
 
@@ -188,7 +188,7 @@
     </div>
     <!-- /.main-container -->
     <!-- load requirejs -->
-    {{HTML::script('/components/requirejs/require.js', array('data-main' => '/admin/js/config/require.settings'))}}
+    {{HTML::script('/components/requirejs/require.js', array('data-main' => '/js/config/require.settings'))}}
     @yield('asset-js')
 </body>
 

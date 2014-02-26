@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('breadcrumbs', Breadcrumbs::render('admin.landlords.houses.edit', $landlord))
 @section('asset-js')
-	{{HTML::script('/admin/js/landlord/form.js')}}
+	{{HTML::script('/js/landlord/form.js')}}
 @stop
 @section('main')
 	{{ Form::model($house, array('method'   =>  'PATCH', 'route' => array('admin.landlords.houses.update', $landlord->sn, $house->sn), 'class' => 'form-horizontal', 'role' => 'form')) }}
