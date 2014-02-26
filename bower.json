@@ -31,6 +31,7 @@
     "jquery-ui": "~1.10.3",
     "chosen": "~1.0.0",
     "jquery-twzipcode" : "git@github.com:essoduke/jQuery-TWzipcode.git",
-    "noty" : "*"
+    "noty" : "*",
+    "bootstrap-simple-prompts" : "*"
   }
 }
