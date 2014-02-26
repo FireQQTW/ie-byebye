@@ -44,7 +44,7 @@
 								<div class="visible-md visible-lg hidden-sm hidden-xs">
 									{{Form::open(array('method'	=> 'DELETE', 'route' =>	array('admin.permissions.destroy', $permission->id), 'class' => 'btn-group'))}}
 										{{HTML::decode(link_to_route('admin.permissions.edit', '<i class="icon-edit bigger-120"></i>編輯', array($permission->id), array('class' => 'btn btn-xs btn-success')))}}
-										{{HTML::decode(link_to_route('admin.permissions.destroy', '<i class="icon-trash bigger-120"></i>刪除', array($permission->id), array('class' => 'btn btn-xs btn-danger simulate-submit')))}}
+										{{HTML::decode(link_to_route('admin.permissions.destroy', '<i class="icon-trash bigger-120"></i>刪除', array($permission->id), array('class' => 'btn btn-xs btn-danger simulate-submit jquery-confirm')))}}
 									{{Form::close()}}
 								</div>
 								{{Form::open(array('method'	=> 'DELETE', 'route' =>	array('admin.permissions.destroy', $permission->id)))}}
@@ -62,7 +62,7 @@
 
 												<li>
 													
-													{{HTML::decode(link_to_route('admin.permissions.destroy', '<span class="red"><i class="icon-trash bigger-120"></i></span>', array($permission->id), array('class' => 'tooltip-error simulate-submit', 'data-rel'	=>	'tooltip', 'title'	=>	'刪除')))}}
+													{{HTML::decode(link_to_route('admin.permissions.destroy', '<span class="red"><i class="icon-trash bigger-120"></i></span>', array($permission->id), array('class' => 'tooltip-error simulate-submit jquery-confirm', 'data-rel'	=>	'tooltip', 'title'	=>	'刪除')))}}
 													
 												</li>
 											</ul>

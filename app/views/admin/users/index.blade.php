@@ -52,7 +52,7 @@
 								<div class="visible-md visible-lg hidden-sm hidden-xs">
 									{{Form::open(array('method'	=> 'DELETE', 'route' =>	array('admin.users.destroy', $user->id), 'class' => 'btn-group'))}}
 										{{HTML::decode(link_to_route('admin.users.edit', '<i class="icon-edit bigger-120"></i>編輯', array($user->id), array('class' => 'btn btn-xs btn-success')))}}
-										{{HTML::ButtonWithIcon('<i class="icon-trash bigger-120"></i>刪除', array('class' => 'btn btn-xs btn-danger', 'type'	=>	'submit')) }}
+										{{HTML::ButtonWithIcon('<i class="icon-trash bigger-120"></i>刪除', array('class' => 'btn btn-xs btn-danger jquery-confirm', 'type'	=>	'submit')) }}
 										{{HTML::decode(link_to_route('admin.users.assign', '<i class="icon-group bigger-120"></i>群組', array($user->id), array('class' => 'btn btn-xs btn-info')))}}
 									{{Form::close()}}
 								</div>
@@ -70,7 +70,7 @@
 												</li>
 												<li>
 													
-													{{HTML::decode(link_to_route('admin.users.destroy', '<span class="red"><i class="icon-trash bigger-120"></i></span>', array($user->id), array('class' => 'tooltip-error simulate-submit', 'data-rel'	=>	'tooltip', 'title'	=>	'刪除')))}}
+													{{HTML::decode(link_to_route('admin.users.destroy', '<span class="red"><i class="icon-trash bigger-120"></i></span>', array($user->id), array('class' => 'tooltip-error simulate-submit jquery-confirm', 'data-rel'	=>	'tooltip', 'title'	=>	'刪除')))}}
 													
 												</li>
 												<li>

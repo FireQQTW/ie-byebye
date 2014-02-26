@@ -50,7 +50,7 @@
                                     {{Form::open(array('method' => 'DELETE', 'route' => array('admin.houses.rooms.destroy', $house->sn, $room->sn), 'class' => 'btn-group'))}}
                                         {{HTML::decode(link_to_route('admin.rooms.pmus.index', '<i class="icon-th bigger-120"></i>控制器', array($room->sn), array('class' => 'btn btn-xs btn-info')))}}
                                         {{HTML::decode(link_to_route('admin.houses.rooms.edit', '<i class="icon-edit bigger-120"></i>編輯', array($house->sn, $room->sn), array('class' => 'btn btn-xs btn-success')))}}
-                                        {{HTML::ButtonWithIcon('<i class="icon-trash bigger-120"></i>刪除', array('class' => 'btn btn-xs btn-danger', 'type'  =>  'submit')) }}
+                                        {{HTML::ButtonWithIcon('<i class="icon-trash bigger-120"></i>刪除', array('class' => 'btn btn-xs btn-danger jquery-confirm', 'type'  =>  'submit')) }}
                                     {{Form::close()}}
                                 </div>
                                 <!-- RWD -->
@@ -72,7 +72,7 @@
                                                 </li>
 
                                                 <li>
-                                                    {{HTML::ButtonWithIcon('<span class="red"><i class="icon-trash bigger-120"></i></span>', array('class' => 'tooltip-error simulate-submit', 'type'  =>  'submit')) }}
+                                                    {{HTML::ButtonWithIcon('<span class="red"><i class="icon-trash bigger-120"></i></span>', array('class' => 'tooltip-error simulate-submit jquery-confirm', 'type'  =>  'submit')) }}
                                                     
                                                 </li>
                                             </ul>

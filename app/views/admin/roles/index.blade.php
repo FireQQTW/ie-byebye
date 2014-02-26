@@ -53,7 +53,7 @@
 								<div class="visible-md visible-lg hidden-sm hidden-xs">
 									{{Form::open(array('method'	=> 'DELETE', 'route' =>	array('admin.roles.destroy', $role->id), 'class' => 'btn-group'))}}
 										{{HTML::decode(link_to_route('admin.roles.edit', '<i class="icon-edit bigger-120"></i>編輯', array($role->id), array('class' => 'btn btn-xs btn-success')))}}
-										{{HTML::decode(link_to_route('admin.roles.destroy', '<i class="icon-trash bigger-120"></i>刪除', array($role->id), array('class' => 'btn btn-xs btn-danger simulate-submit')))}}
+										{{HTML::decode(link_to_route('admin.roles.destroy', '<i class="icon-trash bigger-120"></i>刪除', array($role->id), array('class' => 'btn btn-xs btn-danger simulate-submit jquery-confirm')))}}
 										{{HTML::decode(link_to_route('admin.roles.assign', '<i class="icon-shield bigger-120"></i>權限', array($role->id), array('class' => 'btn btn-xs btn-info')))}}
 										
 									{{Form::close()}}
@@ -73,7 +73,7 @@
 
 												<li>
 													
-													{{HTML::decode(link_to_route('admin.roles.destroy', '<span class="red"><i class="icon-trash bigger-120"></i></span>', array($role->id), array('class' => 'tooltip-error simulate-submit', 'data-rel'	=>	'tooltip', 'title'	=>	'刪除')))}}
+													{{HTML::decode(link_to_route('admin.roles.destroy', '<span class="red"><i class="icon-trash bigger-120"></i></span>', array($role->id), array('class' => 'tooltip-error simulate-submit jquery-confirm', 'data-rel'	=>	'tooltip', 'title'	=>	'刪除')))}}
 													
 												</li>
 												<li>
