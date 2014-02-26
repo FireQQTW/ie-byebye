@@ -21,7 +21,7 @@ class RoomsController extends \BaseController {
 	 */
 	public function index($house_sn)
 	{
-        $h1Small = '列表 &amp; 狀態';
+        $h1Small = '列表';
         try
 		{
 			// find house through landlord
