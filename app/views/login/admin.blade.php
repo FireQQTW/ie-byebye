@@ -7,7 +7,7 @@
 
     <meta name="description" content="overview &amp; stats" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @include('admin._partials.adminCss')
+    @include('_partials._asset_css')
 
 </head>
 
