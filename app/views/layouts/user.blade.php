@@ -7,7 +7,7 @@
 
     <meta name="description" content="overview &amp; stats" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @include('_partials.css')
+    @include('_partials._asset_css')
     @yield('asset-css')
 </head>
 
@@ -29,7 +29,7 @@
                 <ul class="nav ace-nav">
                     <li class="light-blue">
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="/admin/avatars/user.png" />
+                            <img class="nav-user-photo" src="/avatars/user.png" />
                             <span class="user-info">
                                 <small>Welcome</small>
                             </span>
