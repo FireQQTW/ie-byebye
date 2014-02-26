@@ -10,3 +10,4 @@ Thumbs.db
 /public/components
 /tmp
 PayPal.log
+/.coffeescript-cache
