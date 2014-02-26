@@ -23,7 +23,8 @@
       typeahead: 'typeahead/dist/typeahead',
       chosen: '../js/chosen',
       noty: 'noty/js/noty/packaged/jquery.noty.packaged.min',
-      zipcode: 'jquery-twzipcode/jquery.twzipcode.min'
+      zipcode: 'jquery-twzipcode/jquery.twzipcode.min',
+      'bootstrap-prompts': 'bootstrap-simple-prompts/bootstrap-simple-prompts'
     },
     shim: {
       'jquery': {
@@ -52,6 +53,9 @@
       },
       'zipcode': {
         deps: ['jquery']
+      },
+      'bootstrap-prompts': {
+        dpes: ['jquery', 'bootstrap']
       }
     }
   });
