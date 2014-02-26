@@ -9,6 +9,7 @@ define(function() {
         initialize: function() {
             require(['jquery', 'ace/ace.min'], function() {
                 require(['adminApp/run-noty']);
+                require(['adminApp/confirm/define']);
                 $(document).ready(function(){
                     // 使用超連結模擬送出表單
                     $(document).on('click', '.simulate-submit', function(event) {
