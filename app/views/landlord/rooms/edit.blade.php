@@ -36,7 +36,7 @@
 
                 &nbsp; &nbsp; &nbsp;
 
-                {{ HTML::decode(link_to_route('landlord.rooms', '<i class="icon-remove bigger-110"></i>取消', array($room->house->sn), array('class' => 'btn'))) }}
+                {{ HTML::decode(link_to_route('landlord.rooms', '<i class="icon-remove bigger-110"></i>取消', array($room->house->sn), array('class' => 'btn jquery-confirm'))) }}
             </div>
         </div>
     {{ Form::close() }}
